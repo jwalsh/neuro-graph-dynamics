@@ -1,20 +1,781 @@
 {
   "directed": false,
-  "multigraph": false,
+  "multigraph": true,
   "graph": {},
   "nodes": [
-    {"id": "Artificial Intelligence", "type": "Field"},
-    {"id": "Machine Learning", "type": "Subfield"},
-    {"id": "Deep Learning", "type": "Technique"},
-    {"id": "Neural Networks", "type": "Model"},
-    {"id": "Computer Vision", "type": "Application"},
-    {"id": "Natural Language Processing", "type": "Application"}
+    {
+      "label": "AWS Certified AI Practitioner AIF-C01",
+      "type": "certification",
+      "id": "AIF"
+    },
+    {
+      "label": "D1: Fundamentals of AI and ML",
+      "type": "domain",
+      "id": "D1"
+    },
+    {
+      "label": "D2: Fundamentals of Generative AI",
+      "type": "domain",
+      "id": "D2"
+    },
+    {
+      "label": "D3: Applications of Foundation Models",
+      "type": "domain",
+      "id": "D3"
+    },
+    {
+      "label": "D4: Guidelines for Responsible AI",
+      "type": "domain",
+      "id": "D4"
+    },
+    {
+      "label": "D5: Security, Compliance, and Governance",
+      "type": "domain",
+      "id": "D5"
+    },
+    {
+      "label": "Artificial Intelligence",
+      "type": "concept",
+      "id": "AI"
+    },
+    {
+      "label": "Machine Learning",
+      "type": "concept",
+      "id": "ML"
+    },
+    {
+      "label": "Deep Learning",
+      "type": "concept",
+      "id": "DL"
+    },
+    {
+      "label": "ML Types",
+      "type": "concept",
+      "id": "MLTypes"
+    },
+    {
+      "label": "Supervised Learning",
+      "type": "concept",
+      "id": "Supervised"
+    },
+    {
+      "label": "Unsupervised Learning",
+      "type": "concept",
+      "id": "Unsupervised"
+    },
+    {
+      "label": "Reinforcement Learning",
+      "type": "concept",
+      "id": "Reinforcement"
+    },
+    {
+      "label": "Generative AI",
+      "type": "concept",
+      "id": "GenAI"
+    },
+    {
+      "label": "Embeddings",
+      "type": "concept",
+      "id": "Embeddings"
+    },
+    {
+      "label": "Prompt Engineering",
+      "type": "concept",
+      "id": "PromptEng"
+    },
+    {
+      "label": "Foundation Models",
+      "type": "concept",
+      "id": "FounModel"
+    },
+    {
+      "label": "Retrieval Augmented Generation",
+      "type": "concept",
+      "id": "RAG"
+    },
+    {
+      "label": "Evaluation Metrics",
+      "type": "concept",
+      "id": "EvalMetrics"
+    },
+    {
+      "label": "Model Selection Criteria",
+      "type": "concept",
+      "id": "ModelSelection"
+    },
+    {
+      "label": "Responsible AI",
+      "type": "concept",
+      "id": "RespAI"
+    },
+    {
+      "label": "Fairness",
+      "type": "concept",
+      "id": "Fairness"
+    },
+    {
+      "label": "Accountability",
+      "type": "concept",
+      "id": "Accountability"
+    },
+    {
+      "label": "Transparency",
+      "type": "concept",
+      "id": "Transparency"
+    },
+    {
+      "label": "Ethics",
+      "type": "concept",
+      "id": "Ethics"
+    },
+    {
+      "label": "Bias Effects",
+      "type": "concept",
+      "id": "BiasEffects"
+    },
+    {
+      "label": "AWS Security Services",
+      "type": "concept",
+      "id": "AWSSecurity"
+    },
+    {
+      "label": "Data Governance",
+      "type": "concept",
+      "id": "DataGov"
+    },
+    {
+      "label": "Amazon Bedrock",
+      "type": "aws_service",
+      "id": "Bedrock"
+    },
+    {
+      "label": "Amazon SageMaker",
+      "type": "aws_service",
+      "id": "SageMaker"
+    },
+    {
+      "label": "Amazon Comprehend",
+      "type": "aws_service",
+      "id": "Comprehend"
+    },
+    {
+      "label": "Amazon Translate",
+      "type": "aws_service",
+      "id": "Translate"
+    },
+    {
+      "label": "Amazon Transcribe",
+      "type": "aws_service",
+      "id": "Transcribe"
+    },
+    {
+      "label": "Amazon Polly",
+      "type": "aws_service",
+      "id": "Polly"
+    },
+    {
+      "label": "Amazon Rekognition",
+      "type": "aws_service",
+      "id": "Rekognition"
+    },
+    {
+      "label": "Amazon Forecast",
+      "type": "aws_service",
+      "id": "Forecast"
+    },
+    {
+      "label": "Amazon Lex",
+      "type": "aws_service",
+      "id": "Lex"
+    },
+    {
+      "label": "Amazon Personalize",
+      "type": "aws_service",
+      "id": "Personalize"
+    },
+    {
+      "label": "Amazon Textract",
+      "type": "aws_service",
+      "id": "Textract"
+    },
+    {
+      "label": "Amazon Kendra",
+      "type": "aws_service",
+      "id": "Kendra"
+    },
+    {
+      "label": "Amazon Mechanical Turk",
+      "type": "aws_service",
+      "id": "MechTurk"
+    },
+    {
+      "label": "Amazon Augmented AI",
+      "type": "aws_service",
+      "id": "AugmentedAI"
+    },
+    {
+      "label": "AWS DeepRacer",
+      "type": "aws_service",
+      "id": "DeepRacer"
+    },
+    {
+      "label": "Amazon Comprehend Medical",
+      "type": "aws_service",
+      "id": "ComprehendMedical"
+    },
+    {
+      "label": "Amazon Transcribe Medical",
+      "type": "aws_service",
+      "id": "TranscribeMedical"
+    },
+    {
+      "label": "Amazon Q",
+      "type": "aws_service",
+      "id": "AmazonQ"
+    },
+    {
+      "label": "PartyRock",
+      "type": "aws_service",
+      "id": "PartyRock"
+    },
+    {
+      "label": "Clojure",
+      "type": "tool",
+      "id": "Clojure"
+    },
+    {
+      "label": "Python",
+      "type": "tool",
+      "id": "Python"
+    },
+    {
+      "label": "Docker",
+      "type": "tool",
+      "id": "Docker"
+    },
+    {
+      "label": "LocalStack",
+      "type": "tool",
+      "id": "LocalStack"
+    },
+    {
+      "label": "IAM",
+      "type": "tool",
+      "id": "IAM"
+    },
+    {
+      "label": "KMS",
+      "type": "tool",
+      "id": "KMS"
+    },
+    {
+      "label": "CloudTrail",
+      "type": "tool",
+      "id": "CloudTrail"
+    },
+    {
+      "label": "Amazon S3",
+      "type": "aws_service",
+      "id": "S3"
+    },
+    {
+      "label": "Amazon EC2",
+      "type": "aws_service",
+      "id": "EC2"
+    },
+    {
+      "label": "AWS Lambda",
+      "type": "aws_service",
+      "id": "Lambda"
+    },
+    {
+      "label": "Amazon CloudWatch",
+      "type": "aws_service",
+      "id": "CloudWatch"
+    },
+    {
+      "label": "AWS Step Functions",
+      "type": "aws_service",
+      "id": "StepFunctions"
+    },
+    {
+      "label": "AWS Glue",
+      "type": "aws_service",
+      "id": "Glue"
+    },
+    {
+      "type": "test",
+      "id": "TestNode"
+    }
   ],
   "links": [
-    {"source": "Artificial Intelligence", "target": "Machine Learning", "relation": "includes"},
-    {"source": "Machine Learning", "target": "Deep Learning", "relation": "encompasses"},
-    {"source": "Deep Learning", "target": "Neural Networks", "relation": "uses"},
-    {"source": "Machine Learning", "target": "Computer Vision", "relation": "applied to"},
-    {"source": "Machine Learning", "target": "Natural Language Processing", "relation": "applied to"}
+    {
+      "relation": "covers",
+      "source": "AIF",
+      "target": "D1",
+      "key": 0
+    },
+    {
+      "relation": "covers",
+      "source": "AIF",
+      "target": "D2",
+      "key": 0
+    },
+    {
+      "relation": "covers",
+      "source": "AIF",
+      "target": "D3",
+      "key": 0
+    },
+    {
+      "relation": "covers",
+      "source": "AIF",
+      "target": "D4",
+      "key": 0
+    },
+    {
+      "relation": "covers",
+      "source": "AIF",
+      "target": "D5",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Bedrock",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "SageMaker",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Comprehend",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Translate",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Transcribe",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Polly",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Rekognition",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Forecast",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Lex",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Personalize",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Textract",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Kendra",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "MechTurk",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "AugmentedAI",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "DeepRacer",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "ComprehendMedical",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "TranscribeMedical",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "AmazonQ",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "PartyRock",
+      "key": 0
+    },
+    {
+      "relation": "developed with",
+      "source": "AIF",
+      "target": "Clojure",
+      "key": 0
+    },
+    {
+      "relation": "developed with",
+      "source": "AIF",
+      "target": "Python",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "Docker",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "AIF",
+      "target": "LocalStack",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D1",
+      "target": "AI",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D1",
+      "target": "ML",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D1",
+      "target": "DL",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D1",
+      "target": "MLTypes",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D2",
+      "target": "GenAI",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D2",
+      "target": "Embeddings",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D2",
+      "target": "PromptEng",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D2",
+      "target": "FounModel",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D3",
+      "target": "RAG",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D3",
+      "target": "EvalMetrics",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D3",
+      "target": "ModelSelection",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D4",
+      "target": "RespAI",
+      "key": 0
+    },
+    {
+      "relation": "addresses",
+      "source": "D4",
+      "target": "BiasEffects",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D5",
+      "target": "AWSSecurity",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "D5",
+      "target": "DataGov",
+      "key": 0
+    },
+    {
+      "relation": "types",
+      "source": "MLTypes",
+      "target": "Supervised",
+      "key": 0
+    },
+    {
+      "relation": "types",
+      "source": "MLTypes",
+      "target": "Unsupervised",
+      "key": 0
+    },
+    {
+      "relation": "types",
+      "source": "MLTypes",
+      "target": "Reinforcement",
+      "key": 0
+    },
+    {
+      "relation": "features",
+      "source": "RespAI",
+      "target": "Fairness",
+      "key": 0
+    },
+    {
+      "relation": "features",
+      "source": "RespAI",
+      "target": "Accountability",
+      "key": 0
+    },
+    {
+      "relation": "features",
+      "source": "RespAI",
+      "target": "Transparency",
+      "key": 0
+    },
+    {
+      "relation": "features",
+      "source": "RespAI",
+      "target": "Ethics",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "AWSSecurity",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "AWSSecurity",
+      "target": "KMS",
+      "key": 0
+    },
+    {
+      "relation": "includes",
+      "source": "AWSSecurity",
+      "target": "CloudTrail",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Bedrock",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Bedrock",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Bedrock",
+      "target": "AmazonQ",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "Bedrock",
+      "target": "PartyRock",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "SageMaker",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "SageMaker",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "uses",
+      "source": "SageMaker",
+      "target": "EC2",
+      "key": 0
+    },
+    {
+      "relation": "integrates with",
+      "source": "SageMaker",
+      "target": "CloudWatch",
+      "key": 0
+    },
+    {
+      "relation": "can trigger",
+      "source": "SageMaker",
+      "target": "Lambda",
+      "key": 0
+    },
+    {
+      "relation": "can orchestrate",
+      "source": "SageMaker",
+      "target": "StepFunctions",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Comprehend",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Comprehend",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Rekognition",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Rekognition",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Forecast",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Forecast",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Personalize",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Personalize",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Textract",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Textract",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can use",
+      "source": "Kendra",
+      "target": "S3",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "Kendra",
+      "target": "IAM",
+      "key": 0
+    },
+    {
+      "relation": "can integrate with",
+      "source": "Kendra",
+      "target": "AmazonQ",
+      "key": 0
+    },
+    {
+      "relation": "depends on",
+      "source": "IAM",
+      "target": "Glue",
+      "key": 0
+    },
+    {
+      "relation": "works with",
+      "source": "S3",
+      "target": "Glue",
+      "key": 0
+    }
   ]
 }

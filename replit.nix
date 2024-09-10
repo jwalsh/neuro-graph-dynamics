@@ -1,5 +1,7 @@
 {pkgs}: {
   deps = [
+    pkgs.jq
+    pkgs.emacs29
     pkgs.xsimd
     pkgs.libxcrypt
     pkgs.tk

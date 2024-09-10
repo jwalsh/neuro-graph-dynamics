@@ -13,10 +13,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Run Neurosymbolic Knowledge Graph"
+args = "Neurosymbolic Knowledge Graph Web App"
 
 [[workflows.workflow]]
-name = "Run Neurosymbolic Knowledge Graph"
+name = "Neurosymbolic Knowledge Graph Web App"
 author = "agent"
 
 [workflows.workflow.metadata]
@@ -24,7 +24,15 @@ agentRequireRestartOnSave = false
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python main.py"
+args = "python app.py"
+waitForPort = 5000
 
 [deployment]
 run = ["sh", "-c", "python main.py"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[objectStorage]
+defaultBucketID = "replit-objstore-c26a7433-f823-43c0-92c4-4b2d4ceb0b2f"
