@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import json
+from community import community_louvain
 
 class NeurosymbolicKnowledgeGraph:
     def __init__(self):
@@ -71,6 +72,22 @@ class NeurosymbolicKnowledgeGraph:
             mermaid_output += f"    {source.replace(' ', '_')} -->|{relation}| {target.replace(' ', '_')}\n"
         return mermaid_output
 
+    def shortest_path(self, source, target):
+        """Find the shortest path between two nodes."""
+        try:
+            path = nx.shortest_path(self.graph, source, target)
+            return f"Shortest path from {source} to {target}: {' -> '.join(path)}"
+        except nx.NetworkXNoPath:
+            return f"No path exists between {source} and {target}"
+
+    def page_rank(self):
+        """Calculate PageRank for all nodes in the graph."""
+        return nx.pagerank(self.graph)
+
+    def detect_communities(self):
+        """Detect communities using the Louvain method."""
+        return community_louvain.best_partition(self.graph)
+
 def main():
     kg = NeurosymbolicKnowledgeGraph()
     kg.load_graph()  # Load existing graph if available
@@ -83,9 +100,12 @@ def main():
         print("4. Query Node")
         print("5. Save Graph")
         print("6. Export to Mermaid")
-        print("7. Exit")
+        print("7. Find Shortest Path")
+        print("8. Calculate PageRank")
+        print("9. Detect Communities")
+        print("10. Exit")
 
-        choice = input("Enter your choice (1-7): ")
+        choice = input("Enter your choice (1-10): ")
 
         if choice == '1':
             node = input("Enter node name: ")
@@ -110,6 +130,20 @@ def main():
             print("Mermaid Graph:")
             print(mermaid_graph)
         elif choice == '7':
+            source = input("Enter source node: ")
+            target = input("Enter target node: ")
+            print(kg.shortest_path(source, target))
+        elif choice == '8':
+            page_rank = kg.page_rank()
+            print("PageRank for all nodes:")
+            for node, rank in sorted(page_rank.items(), key=lambda x: x[1], reverse=True):
+                print(f"{node}: {rank:.4f}")
+        elif choice == '9':
+            communities = kg.detect_communities()
+            print("Detected communities:")
+            for node, community_id in communities.items():
+                print(f"{node}: Community {community_id}")
+        elif choice == '10':
             print("Exiting... Don't forget to save your changes!")
             break
         else:
