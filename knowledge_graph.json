@@ -1,0 +1,20 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {"id": "Artificial Intelligence", "type": "Field"},
+    {"id": "Machine Learning", "type": "Subfield"},
+    {"id": "Deep Learning", "type": "Technique"},
+    {"id": "Neural Networks", "type": "Model"},
+    {"id": "Computer Vision", "type": "Application"},
+    {"id": "Natural Language Processing", "type": "Application"}
+  ],
+  "links": [
+    {"source": "Artificial Intelligence", "target": "Machine Learning", "relation": "includes"},
+    {"source": "Machine Learning", "target": "Deep Learning", "relation": "encompasses"},
+    {"source": "Deep Learning", "target": "Neural Networks", "relation": "uses"},
+    {"source": "Machine Learning", "target": "Computer Vision", "relation": "applied to"},
+    {"source": "Machine Learning", "target": "Natural Language Processing", "relation": "applied to"}
+  ]
+}
