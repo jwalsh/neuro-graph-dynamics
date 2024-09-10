@@ -255,6 +255,31 @@
       "id": "Taylor",
       "label": "Charles Taylor (1931-)",
       "school": "Communitarianism"
+    },
+    {
+      "id": "Moore",
+      "label": "G.E. Moore (1873-1958)",
+      "school": "Analytic"
+    },
+    {
+      "id": "Ramsey",
+      "label": "Frank P. Ramsey (1903-1930)",
+      "school": "Analytic"
+    },
+    {
+      "id": "Anscombe",
+      "label": "G.E.M. Anscombe (1919-2001)",
+      "school": "Analytic"
+    },
+    {
+      "id": "Dummett",
+      "label": "Michael Dummett (1925-2011)",
+      "school": "Analytic"
+    },
+    {
+      "id": "Turing",
+      "label": "Alan Turing (1912-1954)",
+      "school": "Computer Science"
     }
   ],
   "edges": [
@@ -647,6 +672,68 @@
       "source": "Taylor",
       "target": "MacIntyre",
       "relation": ":corresponded"
+    },
+    {
+      "source": "Frege",
+      "target": "Wittgenstein",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Russell",
+      "target": "Wittgenstein",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Moore",
+      "target": "Wittgenstein",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Ramsey",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Anscombe",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Dummett",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Turing",
+      "relation": ":debated"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Ayer",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Quine",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Kripke",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Austin",
+      "label": "J.L. Austin (1911-1960)",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Cavell",
+      "label": "Stanley Cavell (1926-2018)",
+      "relation": ":influenced"
     }
   ]
 }
