@@ -32,11 +32,12 @@ def get_ollama_models(max_retries=3, retry_delay=5):
     print("Failed to get Ollama models after all retries.")
     return []
 
-def get_ollama_help(model_name, query):
+def get_ollama_help(model_name, query, system_prompt=""):
     try:
         payload = {
             "model": model_name,
-            "prompt": f"Help: {query}",
+            "prompt": query,
+            "system": system_prompt,
             "stream": False
         }
         response = requests.post(f"{OLLAMA_API_URL}/generate", json=payload, timeout=30)
@@ -48,9 +49,9 @@ def get_ollama_help(model_name, query):
             provider="Ollama",
             model=model_name,
             user_text=query,
-            front_content="",
+            front_content=system_prompt,
             back_content=help_text,
-            system_prompt=""
+            system_prompt=system_prompt
         )
         
         return help_text
@@ -75,20 +76,22 @@ def main():
         elif command == "get_help" and len(sys.argv) > 3:
             model_name = sys.argv[2]
             query = sys.argv[3]
-            help_text = get_ollama_help(model_name, query)
+            system_prompt = sys.argv[4] if len(sys.argv) > 4 else ""
+            help_text = get_ollama_help(model_name, query, system_prompt)
             print(json.dumps({"help": help_text}))
         else:
-            print("Usage: python ollama_helper.py [get_models | get_help <model_name> <query>]")
+            print("Usage: python ollama_helper.py [get_models | get_help <model_name> <query> [system_prompt]]")
     else:
         print("Attempting to get Ollama models...")
         models = get_ollama_models()
         print("Available Ollama models:", models)
 
-        model_name = "llama3:latest"
+        model_name = "llama2:latest"
         query = "How to use this model?"
+        system_prompt = "You are an AI assistant specializing in explaining AI models."
         print(f"Getting help for {model_name}...")
         try:
-            help_text = get_ollama_help(model_name, query)
+            help_text = get_ollama_help(model_name, query, system_prompt)
             print(f"Help for {model_name}:")
             print(help_text)
         except Exception as e:
