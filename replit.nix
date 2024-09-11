@@ -1,5 +1,6 @@
 {pkgs}: {
   deps = [
+    pkgs.ollama
     pkgs.jq
     pkgs.emacs29
     pkgs.xsimd

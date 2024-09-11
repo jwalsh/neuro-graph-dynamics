@@ -1,0 +1,40 @@
+~/NeuroGraphDynamics$ python3 ollama_helper.py
+Traceback (most recent call last):
+  File "/home/runner/NeuroGraphDynamics/ollama_helper.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+~/NeuroGraphDynamics$ poetry shell
+Spawning shell within /nix/store/f98g7xbckgqbkagdvpzc2r6lv3h1p9ki-python3-3.11.9
+
+  AssertionError
+
+  
+
+  at /nix/store/j4brfi96ms47xc4pissrnb75fd02jb6m-poetry-in-venv/env/lib/python3.11/site-packages/poetry/console/commands/shell.py:40 in handle
+       36│         self.line(f"Spawning shell within {self.env.path}")
+       37│ 
+       38│         # Be sure that we have the right type of environment.
+       39│         env = self.env
+    →  40│         assert env.is_venv()
+       41│         env = cast("VirtualEnv", env)
+       42│ 
+       43│         # Setting this to avoid spawning unnecessary nested shells
+       44│         environ["POETRY_ACTIVE"] = "1"
+~/NeuroGraphDynamics$ poetry run python3 ~/NeuroGraphDynamics$ python3 ollama_helper.py
+/nix/store/f98g7xbckgqbkagdvpzc2r6lv3h1p9ki-python3-3.11.9/bin/python3: can't open file '/home/runner/NeuroGraphDynamics$': [Errno 2] No such file or directory
+~/NeuroGraphDynamics$ Traceback (most recent call last):
+bash: syntax error near unexpected token `most'
+~/NeuroGraphDynamics$   File "/home/runner/NeuroGraphDynamics/ollama_helper.py", line 1, in <module>
+bash: syntax error near unexpected token `newline'
+~/NeuroGraphDynamics$     import requests
+import: command not installed. Multiple versions of this command were found in Nix.
+Select one to run (or press Ctrl-C to cancel):
+ModuleNotFoundError: No module named 'requests'
+^Cerror: interrupted by the user
+Failed to install nixpkgs.ModuleNotFoundError:.
+import: command not found
+~/NeuroGraphDynamics$ poetry run python3 ollama_helper.py
+Traceback (most recent call last):
+  File "/home/runner/NeuroGraphDynamics/ollama_helper.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'

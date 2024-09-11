@@ -13,6 +13,8 @@ python-louvain = "^0.16"
 scipy = "^1.14.1"
 flask = "^3.0.3"
 jq = "1.8.0"
+requests = "2.32.3"
+replit-ai = "^0.0.11"
 
 
 [build-system]
