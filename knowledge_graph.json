@@ -249,7 +249,7 @@
     },
     {
       "id": "Habermas",
-      "label": "Jürgen Habermas (1929-)",
+      "label": "Jürgen Habermas",
       "school": "Critical Theory",
       "lifetime": "1929-"
     },
@@ -261,7 +261,7 @@
     },
     {
       "id": "Chomsky",
-      "label": "Noam Chomsky (1928-)",
+      "label": "Noam Chomsky",
       "school": "Linguistics, Political Philosophy",
       "lifetime": "1928-"
     },
@@ -279,25 +279,25 @@
     },
     {
       "id": "Singer",
-      "label": "Peter Singer (1946-)",
+      "label": "Peter Singer",
       "school": "Utilitarianism, Applied Ethics",
       "lifetime": "1946-"
     },
     {
       "id": "Nussbaum",
-      "label": "Martha Nussbaum (1947-)",
+      "label": "Martha Nussbaum",
       "school": "Capabilities Approach, Feminist Philosophy",
       "lifetime": "1947-"
     },
     {
       "id": "Butler",
-      "label": "Judith Butler (1956-)",
+      "label": "Judith Butler",
       "school": "Gender Theory, Queer Theory",
       "lifetime": "1956-"
     },
     {
       "id": "Zizek",
-      "label": "Slavoj Žižek (1949-)",
+      "label": "Slavoj Žižek",
       "school": "Critical Theory, Psychoanalysis",
       "lifetime": "1949-"
     },
@@ -339,25 +339,25 @@
     },
     {
       "id": "Dennett",
-      "label": "Daniel Dennett (1942-)",
+      "label": "Daniel Dennett",
       "school": "Philosophy of Mind, Cognitive Science",
       "lifetime": "1942-"
     },
     {
       "id": "Pinker",
-      "label": "Steven Pinker (1954-)",
+      "label": "Steven Pinker",
       "school": "Cognitive Psychology, Linguistics",
       "lifetime": "1954-"
     },
     {
       "id": "Haraway",
-      "label": "Donna Haraway (1944-)",
+      "label": "Donna Haraway",
       "school": "Feminist Studies, Posthumanism",
       "lifetime": "1944-"
     },
     {
       "id": "Latour",
-      "label": "Bruno Latour (1947-2022)",
+      "label": "Bruno Latour",
       "school": "Actor-Network Theory, Philosophy of Science",
       "lifetime": "1947-2022"
     }
@@ -806,13 +806,11 @@
     {
       "source": "Wittgenstein",
       "target": "Austin",
-      "label": "J.L. Austin (1911-1960)",
       "relation": ":influenced"
     },
     {
       "source": "Wittgenstein",
       "target": "Cavell",
-      "label": "Stanley Cavell (1926-2018)",
       "relation": ":influenced"
     },
     {

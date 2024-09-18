@@ -15,6 +15,10 @@ class NeurosymbolicKnowledgeGraph:
             with open(filename, 'r') as f:
                 data = json.load(f)
             self.graph = nx.node_link_graph(data)
+            # Update node attributes to ensure 'label' is set correctly
+            for node, attrs in self.graph.nodes(data=True):
+                if 'label' not in attrs:
+                    attrs['label'] = node
             print(f"Graph loaded from {filename}")
         except FileNotFoundError:
             print(f"File {filename} not found. Starting with an empty graph.")
@@ -53,13 +57,13 @@ class NeurosymbolicKnowledgeGraph:
     def update_contemporary_philosophers(self):
         """Update the graph with contemporary philosophers and their connections."""
         # Add new nodes
-        self.add_node("Singer", {"label": "Peter Singer (1946-)", "school": "Utilitarianism"})
-        self.add_node("West", {"label": "Cornel West (1953-)", "school": "Pragmatism, Critical Theory"})
+        self.add_node("Singer", {"label": "Peter Singer", "school": "Utilitarianism", "lifetime": "1946-"})
+        self.add_node("West", {"label": "Cornel West", "school": "Pragmatism, Critical Theory", "lifetime": "1953-"})
 
         # Update existing nodes
-        self.graph.nodes["Nussbaum"]["label"] = "Martha Nussbaum (1947-)"
-        self.graph.nodes["Habermas"]["label"] = "Jürgen Habermas (1929-)"
-        self.graph.nodes["Butler"]["label"] = "Judith Butler (1956-)"
+        self.graph.nodes["Nussbaum"]["label"] = "Martha Nussbaum"
+        self.graph.nodes["Habermas"]["label"] = "Jürgen Habermas"
+        self.graph.nodes["Butler"]["label"] = "Judith Butler"
 
         # Add new connections
         self.add_edge("Singer", "Nussbaum", {"relation": "collaborated"})
