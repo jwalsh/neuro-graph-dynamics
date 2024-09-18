@@ -54,23 +54,6 @@
             </tbody>
         </table>
     </main>
-<<<<<<< HEAD
-    <footer>
-        <a href="/">Back to Home</a>
-    </footer>
-    <script>
-        var max_distance = Math.max(...Object.values({{ distances | tojson }}).flatMap(obj => Object.values(obj)));
-        var cells = document.querySelectorAll('.similarity-cell');
-        cells.forEach(function(cell) {
-            var distance = parseFloat(cell.textContent);
-            if (!isNaN(distance)) {
-                var intensity = distance / max_distance;
-                cell.style.backgroundColor = `rgba(255, 0, 0, ${intensity})`;
-            }
-        });
-    </script>
-=======
     {% include 'footer.html' %}
->>>>>>> 2eac9e0f2e869dc191ee25cc75fb11b246107744
 </body>
 </html>
