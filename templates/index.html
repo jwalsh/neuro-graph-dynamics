@@ -4,30 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neurosymbolic Knowledge Graph</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="/static/js/home.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Neurosymbolic Knowledge Graph</h1>
-    </header>
-    <nav>
-        <ul>
-            {% for link in additional_links %}
-            <li><a href="{{ link.url }}">{{ link.text }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    {% include 'header.html' %}
     <main>
         <section id="node-operations">
             <h2>Node Query and Enrichment</h2>
             <div class="container">
                 <div class="left-column">
                     <select id="node-select">
-                        <option value="">Select a node</option>
+                        <option value="">Select a philosopher</option>
                     </select>
                     <button id="query-node-btn">Query Node</button>
                     <button id="enrich-node-btn">Enrich Node</button>
@@ -48,147 +40,7 @@
             </div>
             <button id="export-json-btn">Export Graph to JSON</button>
         </section>
-
-        <section id="bedrock-test">
-            <h2>Test Bedrock Model</h2>
-            <input type="text" id="bedrock-model-id" placeholder="Model ID (default: anthropic.claude-v2)">
-            <textarea id="bedrock-prompt" placeholder="Enter your prompt"></textarea>
-            <textarea id="bedrock-system-prompt" placeholder="Enter system prompt (optional)"></textarea>
-            <button id="test-bedrock-btn">Test Bedrock</button>
-            <div id="bedrock-response"></div>
-        </section>
     </main>
-
-    <script>
-        function escapeLabel(label) {
-            return label.replace(/[&<>'"]/g, function(char) {
-                switch (char) {
-                    case '&': return '&amp;';
-                    case '<': return '&lt;';
-                    case '>': return '&gt;';
-                    case "'": return '&#39;';
-                    case '"': return '&quot;';
-                    default: return char;
-                }
-            });
-        }
-
-        $(document).ready(function() {
-            // Initialize clipboard.js
-            new ClipboardJS('.copy-icon');
-
-            // Load nodes
-            $.get('/get_nodes', function(nodes) {
-                var select = $('#node-select');
-                nodes.forEach(function(node) {
-                    select.append($('<option></option>').val(node).text(node));
-                });
-            });
-            
-            // Query node
-            $('#query-node-btn').click(function() {
-                var nodeName = $('#node-select').val();
-                
-                if (!nodeName) {
-                    alert('Please select a node.');
-                    return;
-                }
-                
-                $.ajax({
-                    url: '/enrich_node',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        node_name: nodeName
-                    }),
-                    success: function(response) {
-                        $('#node-info').text(response.original_info);
-                    },
-                    error: function(xhr, status, error) {
-                        $('#node-info').text('Error: ' + error);
-                    }
-                });
-            });
-
-            // Enrich node
-            $('#enrich-node-btn').click(function() {
-                var nodeName = $('#node-select').val();
-                
-                if (!nodeName) {
-                    alert('Please select a node.');
-                    return;
-                }
-                
-                $.ajax({
-                    url: '/enrich_node',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        node_name: nodeName
-                    }),
-                    success: function(response) {
-                        $('#node-info').text('Original Info:\n' + response.original_info + '\n\nEnriched Info:\n' + response.enriched_info);
-                    },
-                    error: function(xhr, status, error) {
-                        $('#node-info').text('Error: ' + error);
-                    }
-                });
-            });
-
-            // Test Bedrock
-            $('#test-bedrock-btn').click(function() {
-                var modelId = $('#bedrock-model-id').val() || 'anthropic.claude-v2';
-                var prompt = $('#bedrock-prompt').val();
-                var systemPrompt = $('#bedrock-system-prompt').val();
-
-                if (!prompt) {
-                    alert('Please enter a prompt.');
-                    return;
-                }
-
-                $.ajax({
-                    url: '/test_bedrock',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        model_id: modelId,
-                        prompt: prompt,
-                        system_prompt: systemPrompt
-                    }),
-                    success: function(response) {
-                        $('#bedrock-response').text(response.response);
-                    },
-                    error: function(xhr, status, error) {
-                        $('#bedrock-response').text('Error: ' + error);
-                    }
-                });
-            });
-
-            // Export JSON
-            $('#export-json-btn').click(function() {
-                window.location.href = '/export_json';
-            });
-
-            // Load and render graph
-            function loadAndRenderGraph() {
-                $.get('/graph_data', function(data) {
-                    var nodes = data.nodes;
-                    var links = data.links;
-                    var mermaidCode = 'graph TD\n';
-
-                    links.forEach(function(link) {
-                        mermaidCode += `    ${escapeLabel(link.source)}["${escapeLabel(nodes.find(n => n.id === link.source).label || link.source)}"] -->|${escapeLabel(link.relation)}| ${escapeLabel(link.target)}["${escapeLabel(nodes.find(n => n.id === link.target).label || link.target)}"]\n`;
-                    });
-
-                    var mermaidDiv = document.getElementById('mermaid-graph');
-                    mermaidDiv.innerHTML = mermaidCode;
-                    mermaid.init(undefined, mermaidDiv);
-                });
-            }
-
-            // Initial graph load
-            loadAndRenderGraph();
-        });
-    </script>
+    {% include 'footer.html' %}
 </body>
 </html>

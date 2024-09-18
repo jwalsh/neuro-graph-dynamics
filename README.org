@@ -1,17 +1,11 @@
-#+TITLE: Neurosymbolic Knowledge Graph
+# Neurosymbolic Knowledge Graph
 
-* Project Description
+** Project Description
 This project implements a web-based Neurosymbolic Knowledge Graph system that allows users to visualize, query, and enrich philosophical concepts and their relationships using various AI services.
 
-* For Users
 ** Prerequisites
-- Python 3.7+
-- Flask
-- NetworkX
-- Matplotlib
-- Boto3 (for AWS Bedrock integration)
-- Google AI API (for Gemini integration)
-- Ollama (for local LLM support)
+- Python 3.11+
+- Poetry (for dependency management)
 
 ** Installation
 1. Clone the repository:
@@ -20,20 +14,22 @@ This project implements a web-based Neurosymbolic Knowledge Graph system that al
    cd neurosymbolic-knowledge-graph
    #+END_SRC
 
-2. Install dependencies:
+2. Install dependencies using Poetry:
    #+BEGIN_SRC shell
-   pip install -r requirements.txt
+   poetry install
    #+END_SRC
 
 3. Set up environment variables:
    - AWS_ACCESS_KEY_ID
    - AWS_SECRET_ACCESS_KEY
-   - GOOGLE_AI_API_KEY
+   - GOOGLE_API_KEY
+   - ANTHROPIC_API_KEY
+   - OPENAI_API_KEY
 
 ** Usage
 1. Run the Flask application:
    #+BEGIN_SRC shell
-   python app.py
+   make run
    #+END_SRC
 
 2. Open a web browser and navigate to http://localhost:5000
@@ -48,33 +44,30 @@ This project implements a web-based Neurosymbolic Knowledge Graph system that al
 - Top Nodes Similarity: Explore the similarity between the top nodes in the graph based on their distances.
 - Bedrock Model Testing: Test different AWS Bedrock models with custom prompts and system prompts.
 
-* For Developers
-** Project Structure
-- app.py: Main Flask application
-- bedrock_helper.py: AWS Bedrock integration
-- gemini_helper.py: Google AI (Gemini) integration
-- ollama_helper.py: Ollama integration for local LLM support
-- database.py: SQLite database operations
-- static/css/styles.css: CSS styles for the web interface
-- templates/index.html: HTML template for the main interface
-- templates/philosophers_pagerank.html: Template for displaying PageRank results
-- templates/top_nodes_distances.html: Template for displaying node similarities
+** Development
+This project follows literate programming principles using org-mode. The main source code is generated from the README.org file using Babel.
 
-** Adding New Features
-1. Implement new functionality in the appropriate helper file or create a new one if needed.
-2. Update app.py to include new routes or integrate new features.
-3. Modify the HTML and CSS files to reflect changes in the user interface.
-4. Update this README with any new dependencies or usage instructions.
+To modify the source code:
+1. Edit the relevant code blocks in README.org
+2. Use C-c C-v t to tangle the code blocks and generate the Python files
 
-** Running Tests
-(Add instructions for running tests once they are implemented)
+** Testing
+#+BEGIN_SRC shell
+make test
+#+END_SRC
+
+** Linting
+#+BEGIN_SRC shell
+make lint
+#+END_SRC
 
 ** Contributing
 1. Fork the repository
 2. Create a new branch for your feature
-3. Commit your changes
-4. Push to your fork
-5. Submit a pull request
+3. Make your changes and commit them
+4. Push to your fork and submit a pull request
 
-* License
+Please ensure your code follows the project's coding standards and includes appropriate tests.
+
+** License
 (Add your chosen license information here)

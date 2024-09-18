@@ -1,7 +1,9 @@
-import networkx as nx
-import matplotlib.pyplot as plt
 import json
+
+import matplotlib.pyplot as plt
+import networkx as nx
 from community import community_louvain
+
 
 class NeurosymbolicKnowledgeGraph:
     def __init__(self):
@@ -19,12 +21,19 @@ class NeurosymbolicKnowledgeGraph:
         """Visualize the current state of the graph."""
         pos = nx.spring_layout(self.graph)
         plt.figure(figsize=(12, 8))
-        nx.draw(self.graph, pos, with_labels=True, node_color='lightblue', 
-                node_size=500, font_size=10, font_weight='bold')
-        edge_labels = nx.get_edge_attributes(self.graph, 'relation')
+        nx.draw(
+            self.graph,
+            pos,
+            with_labels=True,
+            node_color="lightblue",
+            node_size=500,
+            font_size=10,
+            font_weight="bold",
+        )
+        edge_labels = nx.get_edge_attributes(self.graph, "relation")
         nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=edge_labels)
         plt.title("Neurosymbolic Knowledge Graph")
-        plt.axis('off')
+        plt.axis("off")
         plt.tight_layout()
         plt.show()
 
@@ -32,31 +41,31 @@ class NeurosymbolicKnowledgeGraph:
         """Retrieve information about a node and its neighbors."""
         if node not in self.graph:
             return f"Node '{node}' not found in the graph."
-        
+
         neighbors = list(self.graph.neighbors(node))
         node_data = self.graph.nodes[node]
         edges = self.graph.edges(node, data=True)
-        
+
         result = f"Node: {node}\n"
         result += f"Attributes: {node_data}\n"
         result += f"Neighbors: {neighbors}\n"
         result += "Edges:\n"
         for edge in edges:
             result += f"  - {edge[0]} -> {edge[1]}: {edge[2]}\n"
-        
+
         return result
 
-    def save_graph(self, filename='knowledge_graph.json'):
+    def save_graph(self, filename="knowledge_graph.json"):
         """Save the graph to a JSON file."""
         data = nx.node_link_data(self.graph)
-        with open(filename, 'w') as f:
+        with open(filename, "w") as f:
             json.dump(data, f, indent=2)
         print(f"Graph saved to {filename}")
 
-    def load_graph(self, filename='knowledge_graph.json'):
+    def load_graph(self, filename="knowledge_graph.json"):
         """Load the graph from a JSON file."""
         try:
-            with open(filename, 'r') as f:
+            with open(filename, "r") as f:
                 data = json.load(f)
             self.graph = nx.node_link_graph(data)
             print(f"Graph loaded from {filename}")
@@ -68,7 +77,7 @@ class NeurosymbolicKnowledgeGraph:
         mermaid_output = "graph TD\n"
         for edge in self.graph.edges(data=True):
             source, target = edge[0], edge[1]
-            relation = edge[2].get('relation', '')
+            relation = edge[2].get("relation", "")
             mermaid_output += f"    {source.replace(' ', '_')} -->|{relation}| {target.replace(' ', '_')}\n"
         return mermaid_output
 
@@ -87,6 +96,7 @@ class NeurosymbolicKnowledgeGraph:
     def detect_communities(self):
         """Detect communities using the Louvain method."""
         return community_louvain.best_partition(self.graph)
+
 
 def main():
     kg = NeurosymbolicKnowledgeGraph()
@@ -107,47 +117,52 @@ def main():
 
         choice = input("Enter your choice (1-10): ")
 
-        if choice == '1':
+        if choice == "1":
             node = input("Enter node name: ")
-            attributes = input("Enter node attributes (as JSON, press Enter for none): ")
+            attributes = input(
+                "Enter node attributes (as JSON, press Enter for none): "
+            )
             attributes = json.loads(attributes) if attributes else None
             kg.add_node(node, attributes)
-        elif choice == '2':
+        elif choice == "2":
             node1 = input("Enter first node name: ")
             node2 = input("Enter second node name: ")
             relation = input("Enter relation (press Enter for none): ")
             attributes = {"relation": relation} if relation else None
             kg.add_edge(node1, node2, attributes)
-        elif choice == '3':
+        elif choice == "3":
             kg.visualize()
-        elif choice == '4':
+        elif choice == "4":
             node = input("Enter node to query: ")
             print(kg.query(node))
-        elif choice == '5':
+        elif choice == "5":
             kg.save_graph()
-        elif choice == '6':
+        elif choice == "6":
             mermaid_graph = kg.export_to_mermaid()
             print("Mermaid Graph:")
             print(mermaid_graph)
-        elif choice == '7':
+        elif choice == "7":
             source = input("Enter source node: ")
             target = input("Enter target node: ")
             print(kg.shortest_path(source, target))
-        elif choice == '8':
+        elif choice == "8":
             page_rank = kg.page_rank()
             print("PageRank for all nodes:")
-            for node, rank in sorted(page_rank.items(), key=lambda x: x[1], reverse=True):
+            for node, rank in sorted(
+                page_rank.items(), key=lambda x: x[1], reverse=True
+            ):
                 print(f"{node}: {rank:.4f}")
-        elif choice == '9':
+        elif choice == "9":
             communities = kg.detect_communities()
             print("Detected communities:")
             for node, community_id in communities.items():
                 print(f"{node}: Community {community_id}")
-        elif choice == '10':
+        elif choice == "10":
             print("Exiting... Don't forget to save your changes!")
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()

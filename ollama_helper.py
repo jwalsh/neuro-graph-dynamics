@@ -1,10 +1,13 @@
-import requests
 import json
-import time
 import sys
+import time
+
+import requests
+
 from database import create_database, save_response
 
 OLLAMA_API_URL = "http://localhost:11434/api"
+
 
 def is_ollama_server_running():
     try:
@@ -12,6 +15,7 @@ def is_ollama_server_running():
         return response.status_code == 200
     except requests.RequestException:
         return False
+
 
 def get_ollama_models(max_retries=3, retry_delay=5):
     for attempt in range(max_retries):
@@ -21,16 +25,19 @@ def get_ollama_models(max_retries=3, retry_delay=5):
                 models = response.json().get("models", [])
                 return [model["name"] for model in models]
             else:
-                print(f"Attempt {attempt + 1}: Failed to get models. Status code: {response.status_code}")
+                print(
+                    f"Attempt {attempt + 1}: Failed to get models. Status code: {response.status_code}"
+                )
         except requests.RequestException as e:
             print(f"Attempt {attempt + 1}: Error connecting to Ollama API: {str(e)}")
-        
+
         if attempt < max_retries - 1:
             print(f"Retrying in {retry_delay} seconds...")
             time.sleep(retry_delay)
-    
+
     print("Failed to get Ollama models after all retries.")
     return []
+
 
 def get_ollama_help(model_name, query, system_prompt=""):
     try:
@@ -38,12 +45,12 @@ def get_ollama_help(model_name, query, system_prompt=""):
             "model": model_name,
             "prompt": query,
             "system": system_prompt,
-            "stream": False
+            "stream": False,
         }
         response = requests.post(f"{OLLAMA_API_URL}/generate", json=payload, timeout=30)
         response.raise_for_status()
         help_text = response.json().get("response", "No help available.")
-        
+
         save_response(
             architecture_name="Neurosymbolic Knowledge Graph",
             provider="Ollama",
@@ -51,16 +58,19 @@ def get_ollama_help(model_name, query, system_prompt=""):
             user_text=query,
             front_content=system_prompt,
             back_content=help_text,
-            system_prompt=system_prompt
+            system_prompt=system_prompt,
         )
-        
+
         return help_text
     except requests.exceptions.Timeout:
         return f"Error: Request timed out when getting help for model {model_name}"
     except requests.exceptions.HTTPError as e:
-        return f"Error: HTTP error occurred: {e.response.status_code} - {e.response.text}"
+        return (
+            f"Error: HTTP error occurred: {e.response.status_code} - {e.response.text}"
+        )
     except requests.exceptions.RequestException as e:
         return f"Error: An unexpected error occurred: {str(e)}"
+
 
 def main():
     create_database()
@@ -80,7 +90,9 @@ def main():
             help_text = get_ollama_help(model_name, query, system_prompt)
             print(json.dumps({"help": help_text}))
         else:
-            print("Usage: python ollama_helper.py [get_models | get_help <model_name> <query> [system_prompt]]")
+            print(
+                "Usage: python ollama_helper.py [get_models | get_help <model_name> <query> [system_prompt]]"
+            )
     else:
         print("Attempting to get Ollama models...")
         models = get_ollama_models()
@@ -96,6 +108,7 @@ def main():
             print(help_text)
         except Exception as e:
             print(f"An error occurred while getting help for {model_name}: {str(e)}")
+
 
 if __name__ == "__main__":
     main()
