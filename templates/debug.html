@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Debug Page</title>
+=======
+    <title>Debug Information</title>
+>>>>>>> 2eac9e0f2e869dc191ee25cc75fb11b246107744
     <link rel="stylesheet" href="/static/css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>Debug Page</h1>
     <section>
         <h2>Reload Database from JSON</h2>
@@ -36,6 +41,82 @@
                 var prompt = $('#bedrock-prompt').val();
                 $.post('/check_bedrock', {model_id: model_id, prompt: prompt}, function(data) {
                     $('#bedrock-result').text(data.response);
+=======
+    {% include 'header.html' %}
+    <main>
+        <h2>Debug Information</h2>
+        <section id="graph-statistics">
+            <h3>Graph Statistics</h3>
+            <ul>
+                <li>Number of nodes: <span id="node-count">{{ debug_info.graph_nodes }}</span></li>
+                <li>Number of edges: <span id="edge-count">{{ debug_info.graph_edges }}</span></li>
+                <li>Last updated: <span id="last-updated">{{ debug_info.last_updated }}</span></li>
+            </ul>
+        </section>
+
+        <section id="database-operations">
+            <h3>Database Operations</h3>
+            <button id="reset-db-btn">Reset Database</button>
+            <div id="reset-db-result"></div>
+        </section>
+
+        <section id="bedrock-test">
+            <h3>Test Bedrock Model</h3>
+            <input type="text" id="bedrock-model-id" placeholder="Model ID (default: anthropic.claude-v2)">
+            <textarea id="bedrock-prompt" placeholder="Enter your prompt"></textarea>
+            <textarea id="bedrock-system-prompt" placeholder="Enter system prompt (optional)"></textarea>
+            <button id="test-bedrock-btn">Test Bedrock</button>
+            <div id="bedrock-response"></div>
+        </section>
+    </main>
+    {% include 'footer.html' %}
+
+    <script>
+        $(document).ready(function() {
+            // Reset Database
+            $('#reset-db-btn').click(function() {
+                $.ajax({
+                    url: '/reset_database',
+                    method: 'POST',
+                    success: function(response) {
+                        $('#reset-db-result').text('Database reset successfully. ' + response.message);
+                        $('#node-count').text(response.graph_nodes);
+                        $('#edge-count').text(response.graph_edges);
+                        $('#last-updated').text(response.last_updated);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#reset-db-result').text('Error resetting database: ' + error);
+                    }
+                });
+            });
+
+            // Test Bedrock
+            $('#test-bedrock-btn').click(function() {
+                var modelId = $('#bedrock-model-id').val() || 'anthropic.claude-v2';
+                var prompt = $('#bedrock-prompt').val();
+                var systemPrompt = $('#bedrock-system-prompt').val();
+
+                if (!prompt) {
+                    alert('Please enter a prompt.');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/test_bedrock',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        model_id: modelId,
+                        prompt: prompt,
+                        system_prompt: systemPrompt
+                    }),
+                    success: function(response) {
+                        $('#bedrock-response').text(response.response);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#bedrock-response').text('Error: ' + error);
+                    }
+>>>>>>> 2eac9e0f2e869dc191ee25cc75fb11b246107744
                 });
             });
         });

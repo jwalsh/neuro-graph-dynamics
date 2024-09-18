@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualization</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% include 'header.html' %}
+    <main>
+        <h2>Knowledge Graph Visualization</h2>
+        <div id="graph-container">
+            <div id="mermaid-graph"></div>
+        </div>
+    </main>
+    {% include 'footer.html' %}
+    <script>
+        $(document).ready(function() {
+            function escapeLabel(label) {
+                return label.replace(/[&<>'"]/g, function(char) {
+                    switch (char) {
+                        case '&': return '&amp;';
+                        case '<': return '&lt;';
+                        case '>': return '&gt;';
+                        case "'": return '&#39;';
+                        case '"': return '&quot;';
+                        default: return char;
+                    }
+                });
+            }
+
+            function renderGraph(data) {
+                var nodes = data.nodes;
+                var links = data.links;
+                var mermaidCode = 'graph TD\n';
+
+                links.forEach(function(link) {
+                    mermaidCode += `    ${escapeLabel(link.source)}["${escapeLabel(nodes.find(n => n.id === link.source).label || link.source)}"] -->|${escapeLabel(link.relation)}| ${escapeLabel(link.target)}["${escapeLabel(nodes.find(n => n.id === link.target).label || link.target)}"]\n`;
+                });
+
+                var mermaidDiv = document.getElementById('mermaid-graph');
+                mermaidDiv.innerHTML = mermaidCode;
+                mermaid.init(undefined, mermaidDiv);
+            }
+
+            // Load and render graph
+            $.get('/graph_data', renderGraph);
+        });
+    </script>
+</body>
+</html>

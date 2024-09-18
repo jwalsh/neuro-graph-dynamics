@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Philosophers PageRank</h1>
-    </header>
+    {% include 'header.html' %}
     <main>
+        <h2>Philosophers PageRank</h2>
         <table>
             <thead>
                 <tr>
@@ -30,8 +29,6 @@
             </tbody>
         </table>
     </main>
-    <footer>
-        <a href="/">Back to Home</a>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>
