@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field
 import time
 
 # Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class KnowledgeBaseResult(BaseModel):
     relation: str
@@ -149,13 +149,18 @@ def query_knowledge_base(query: str, max_results: int = 5, max_retries: int = 3,
             logging.info(f"Querying knowledge base with: {query}")
             payload = {
                 "knowledgeBaseId": knowledgeBaseId,
-                "query": query,
+                "retrievalQuery": {
+                    "text": query
+                },
                 "retrievalConfiguration": {
                     "vectorSearchConfiguration": {
                         "numberOfResults": max_results
                     }
                 }
             }
+            
+            logging.debug(f"Bedrock API payload: {json.dumps(payload, indent=2)}")
+            
             response = client.retrieve(**payload)
             
             logging.info(f"Successfully queried knowledge base. Results: {len(response['retrievalResults'])}")
@@ -179,8 +184,6 @@ def query_knowledge_base(query: str, max_results: int = 5, max_retries: int = 3,
             error_code = e.response['Error']['Code']
             error_message = e.response['Error']['Message']
             logging.error(f"AWS Error ({error_code}): {error_message}")
-            logging.debug(f"Full error response: {e.response}")
-            
             if 'ValidationException' in str(e):
                 logging.error(f"Validation error details: {e.response['Error']['Message']}")
             
