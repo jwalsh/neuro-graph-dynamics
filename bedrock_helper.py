@@ -101,13 +101,12 @@ def query_bedrock_kb(query: str) -> str:
         # Prepare the request payload
         payload = {
             "inputText": query,
-            "maxTokens": 200,
-            "temperature": 0.7,
-            "topP": 1,
-            "stopSequences": [],
-            "countPenalty": {"scale": 0},
-            "presencePenalty": {"scale": 0},
-            "frequencyPenalty": {"scale": 0}
+            "textGenerationConfig": {
+                "maxTokenCount": 200,
+                "temperature": 0.7,
+                "topP": 1,
+                "stopSequences": [],
+            }
         }
         
         # Invoke the Bedrock model
