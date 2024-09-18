@@ -58,15 +58,6 @@
             </div>
             <button id="export-json-btn">Export Graph to JSON</button>
         </section>
-
-        <section id="bedrock-test">
-            <h2>Test Bedrock Model</h2>
-            <input type="text" id="bedrock-model-id" placeholder="Model ID (default: anthropic.claude-v2)">
-            <textarea id="bedrock-prompt" placeholder="Enter your prompt"></textarea>
-            <textarea id="bedrock-system-prompt" placeholder="Enter system prompt (optional)"></textarea>
-            <button id="test-bedrock-btn">Test Bedrock</button>
-            <div id="bedrock-response"></div>
-        </section>
     </main>
 
     <script>
@@ -205,35 +196,6 @@
                     },
                     error: function(xhr, status, error) {
                         alert('Error: ' + error);
-                    }
-                });
-            });
-
-            // Test Bedrock
-            $('#test-bedrock-btn').click(function() {
-                var modelId = $('#bedrock-model-id').val() || 'anthropic.claude-v2';
-                var prompt = $('#bedrock-prompt').val();
-                var systemPrompt = $('#bedrock-system-prompt').val();
-
-                if (!prompt) {
-                    alert('Please enter a prompt.');
-                    return;
-                }
-
-                $.ajax({
-                    url: '/test_bedrock',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        model_id: modelId,
-                        prompt: prompt,
-                        system_prompt: systemPrompt
-                    }),
-                    success: function(response) {
-                        $('#bedrock-response').text(response.response);
-                    },
-                    error: function(xhr, status, error) {
-                        $('#bedrock-response').text('Error: ' + error);
                     }
                 });
             });
