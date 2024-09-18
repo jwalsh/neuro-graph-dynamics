@@ -93,89 +93,53 @@ class NeurosymbolicKnowledgeGraph:
 
     def update_contemporary_philosophers(self):
         """Update the graph with contemporary philosophers and their connections."""
-        # Add new nodes
-        self.add_node("Singer", {"label": "Peter Singer (1946-)", "school": "Utilitarianism"})
-        self.add_node("West", {"label": "Cornel West (1953-)", "school": "Pragmatism, Critical Theory"})
-
-        # Update existing nodes
-        self.graph.nodes["Nussbaum"]["label"] = "Martha Nussbaum (1947-)"
-        self.graph.nodes["Habermas"]["label"] = "Jürgen Habermas (1929-)"
-        self.graph.nodes["Butler"]["label"] = "Judith Butler (1956-)"
-
-        # Add new connections
-        self.add_edge("Singer", "Nussbaum", {"relation": "collaborated"})
-        self.add_edge("Singer", "Rawls", {"relation": "influenced by"})
-        self.add_edge("West", "Dewey", {"relation": "influenced by"})
-        self.add_edge("West", "Marx", {"relation": "influenced by"})
-        self.add_edge("Habermas", "West", {"relation": "debated"})
-        self.add_edge("Butler", "Foucault", {"relation": "influenced by"})
-        self.add_edge("Butler", "Derrida", {"relation": "influenced by"})
-        self.add_edge("Nussbaum", "Rawls", {"relation": "influenced by"})
-        self.add_edge("Nussbaum", "Sen", {"relation": "collaborated"})
-
-        print("Contemporary philosophers and their connections have been added to the graph.")
+        # This method is no longer needed as we've updated the JSON file directly
+        print("Contemporary philosophers have been updated in the knowledge_graph.json file.")
 
 def main():
     kg = NeurosymbolicKnowledgeGraph()
-    kg.load_graph()  # Load existing graph if available
-
-    # Update the graph with contemporary philosophers
-    kg.update_contemporary_philosophers()
+    kg.load_graph()  # Load existing graph from the updated JSON file
 
     while True:
         print("\nNeurosymbolic Knowledge Graph Operations:")
-        print("1. Add Node")
-        print("2. Add Edge")
-        print("3. Visualize Graph")
-        print("4. Query Node")
-        print("5. Save Graph")
+        print("1. Visualize Graph")
+        print("2. Query Node")
+        print("3. Find Shortest Path")
+        print("4. Calculate PageRank")
+        print("5. Detect Communities")
         print("6. Export to Mermaid")
-        print("7. Find Shortest Path")
-        print("8. Calculate PageRank")
-        print("9. Detect Communities")
-        print("10. Exit")
+        print("7. Save Graph")
+        print("8. Exit")
 
-        choice = input("Enter your choice (1-10): ")
+        choice = input("Enter your choice (1-8): ")
 
         if choice == '1':
-            node = input("Enter node name: ")
-            attributes = input("Enter node attributes (as JSON, press Enter for none): ")
-            lifetime = input("Enter node lifetime (optional, press Enter to skip): ")
-            attributes = json.loads(attributes) if attributes else None
-            kg.add_node(node, attributes, lifetime)
-        elif choice == '2':
-            node1 = input("Enter first node name: ")
-            node2 = input("Enter second node name: ")
-            relation = input("Enter relation (press Enter for none): ")
-            attributes = {"relation": relation} if relation else None
-            kg.add_edge(node1, node2, attributes)
-        elif choice == '3':
             kg.visualize()
-        elif choice == '4':
+        elif choice == '2':
             node = input("Enter node to query: ")
             print(kg.query(node))
+        elif choice == '3':
+            source = input("Enter source node: ")
+            target = input("Enter target node: ")
+            print(kg.shortest_path(source, target))
+        elif choice == '4':
+            page_rank = kg.page_rank()
+            print("PageRank for all nodes:")
+            for node, rank in sorted(page_rank.items(), key=lambda x: x[1], reverse=True):
+                print(f"{node}: {rank:.4f}")
         elif choice == '5':
-            kg.save_graph()
+            communities = kg.detect_communities()
+            print("Detected communities:")
+            for node, community_id in communities.items():
+                print(f"{node}: Community {community_id}")
         elif choice == '6':
             mermaid_graph = kg.export_to_mermaid()
             print("Mermaid Graph:")
             print(mermaid_graph)
         elif choice == '7':
-            source = input("Enter source node: ")
-            target = input("Enter target node: ")
-            print(kg.shortest_path(source, target))
+            kg.save_graph()
         elif choice == '8':
-            page_rank = kg.page_rank()
-            print("PageRank for all nodes:")
-            for node, rank in sorted(page_rank.items(), key=lambda x: x[1], reverse=True):
-                print(f"{node}: {rank:.4f}")
-        elif choice == '9':
-            communities = kg.detect_communities()
-            print("Detected communities:")
-            for node, community_id in communities.items():
-                print(f"{node}: Community {community_id}")
-        elif choice == '10':
-            print("Exiting... Don't forget to save your changes!")
+            print("Exiting... Thank you for using the Neurosymbolic Knowledge Graph!")
             break
         else:
             print("Invalid choice. Please try again.")

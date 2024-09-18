@@ -1,882 +1,869 @@
 {
-  "directed": false,
-  "multigraph": true,
-  "graph": {},
+  "name": "Philosophical Tapestry: 500 Years of Intellectual Influence",
   "nodes": [
     {
-      "label": "Ren\u00e9 Descartes (1596-1650)",
+      "id": "Descartes",
+      "label": "René Descartes",
       "school": "Rationalism",
-      "id": "Descartes"
+      "lifetime": "1596-1650"
     },
     {
-      "label": "Baruch Spinoza (1632-1677)",
+      "id": "Spinoza",
+      "label": "Baruch Spinoza",
       "school": "Rationalism",
-      "id": "Spinoza"
+      "lifetime": "1632-1677"
     },
     {
-      "label": "John Locke (1632-1704)",
+      "id": "Locke",
+      "label": "John Locke",
       "school": "Empiricism",
-      "id": "Locke"
+      "lifetime": "1632-1704"
     },
     {
-      "label": "Gottfried Leibniz (1646-1716)",
+      "id": "Leibniz",
+      "label": "Gottfried Leibniz",
       "school": "Rationalism",
-      "id": "Leibniz"
+      "lifetime": "1646-1716"
     },
     {
-      "label": "George Berkeley (1685-1753)",
+      "id": "Berkeley",
+      "label": "George Berkeley",
       "school": "Idealism",
-      "id": "Berkeley"
+      "lifetime": "1685-1753"
     },
     {
-      "label": "Voltaire (1694-1778)",
+      "id": "Voltaire",
+      "label": "Voltaire",
       "school": "Enlightenment",
-      "id": "Voltaire"
+      "lifetime": "1694-1778"
     },
     {
-      "label": "David Hume (1711-1776)",
+      "id": "Hume",
+      "label": "David Hume",
       "school": "Empiricism",
-      "id": "Hume"
+      "lifetime": "1711-1776"
     },
     {
-      "label": "Jean-Jacques Rousseau (1712-1778)",
+      "id": "Rousseau",
+      "label": "Jean-Jacques Rousseau",
       "school": "Romanticism",
-      "id": "Rousseau"
+      "lifetime": "1712-1778"
     },
     {
-      "label": "Adam Smith (1723-1790)",
+      "id": "Smith",
+      "label": "Adam Smith",
       "school": "Classical Economics",
-      "id": "Smith"
+      "lifetime": "1723-1790"
     },
     {
-      "label": "Immanuel Kant (1724-1804)",
+      "id": "Kant",
+      "label": "Immanuel Kant",
       "school": "German Idealism",
-      "id": "Kant"
+      "lifetime": "1724-1804"
     },
     {
-      "label": "Jeremy Bentham (1748-1832)",
+      "id": "Bentham",
+      "label": "Jeremy Bentham",
       "school": "Utilitarianism",
-      "id": "Bentham"
+      "lifetime": "1748-1832"
     },
     {
-      "label": "Georg Wilhelm Friedrich Hegel (1770-1831)",
+      "id": "Hegel",
+      "label": "Georg Wilhelm Friedrich Hegel",
       "school": "German Idealism",
-      "id": "Hegel"
+      "lifetime": "1770-1831"
     },
     {
-      "label": "Arthur Schopenhauer (1788-1860)",
+      "id": "Schopenhauer",
+      "label": "Arthur Schopenhauer",
       "school": "Pessimism",
-      "id": "Schopenhauer"
+      "lifetime": "1788-1860"
     },
     {
-      "label": "John Stuart Mill (1806-1873)",
+      "id": "Mill",
+      "label": "John Stuart Mill",
       "school": "Utilitarianism",
-      "id": "Mill"
+      "lifetime": "1806-1873"
     },
     {
-      "label": "S\u00f8ren Kierkegaard (1813-1855)",
+      "id": "Kierkegaard",
+      "label": "Søren Kierkegaard",
       "school": "Existentialism",
-      "id": "Kierkegaard"
+      "lifetime": "1813-1855"
     },
     {
-      "label": "Karl Marx (1818-1883)",
+      "id": "Marx",
+      "label": "Karl Marx",
       "school": "Marxism",
-      "id": "Marx"
+      "lifetime": "1818-1883"
     },
     {
-      "label": "Friedrich Engels (1820-1895)",
+      "id": "Engels",
+      "label": "Friedrich Engels",
       "school": "Marxism",
-      "id": "Engels"
+      "lifetime": "1820-1895"
     },
     {
-      "label": "Charles Sanders Peirce (1839-1914)",
+      "id": "Peirce",
+      "label": "Charles Sanders Peirce",
       "school": "Pragmatism",
-      "id": "Peirce"
+      "lifetime": "1839-1914"
     },
     {
-      "label": "William James (1842-1910)",
+      "id": "James",
+      "label": "William James",
       "school": "Pragmatism",
-      "id": "James"
+      "lifetime": "1842-1910"
     },
     {
-      "label": "Friedrich Nietzsche (1844-1900)",
+      "id": "Nietzsche",
+      "label": "Friedrich Nietzsche",
       "school": "Existentialism",
-      "id": "Nietzsche"
+      "lifetime": "1844-1900"
     },
     {
-      "label": "Gottlob Frege (1848-1925)",
+      "id": "Frege",
+      "label": "Gottlob Frege",
       "school": "Analytic",
-      "id": "Frege"
+      "lifetime": "1848-1925"
     },
     {
-      "label": "Edmund Husserl (1859-1938)",
+      "id": "Husserl",
+      "label": "Edmund Husserl",
       "school": "Phenomenology",
-      "id": "Husserl"
+      "lifetime": "1859-1938"
     },
     {
-      "label": "John Dewey (1859-1952)",
+      "id": "Dewey",
+      "label": "John Dewey",
       "school": "Pragmatism",
-      "id": "Dewey"
+      "lifetime": "1859-1952"
     },
     {
-      "label": "Sigmund Freud (1856-1939)",
+      "id": "Freud",
+      "label": "Sigmund Freud",
       "school": "Psychoanalysis",
-      "id": "Freud"
+      "lifetime": "1856-1939"
     },
     {
-      "label": "Max Weber (1864-1920)",
+      "id": "Weber",
+      "label": "Max Weber",
       "school": "Sociology",
-      "id": "Weber"
+      "lifetime": "1864-1920"
     },
     {
-      "label": "Bertrand Russell (1872-1970)",
+      "id": "Russell",
+      "label": "Bertrand Russell",
       "school": "Analytic",
-      "id": "Russell"
+      "lifetime": "1872-1970"
     },
     {
-      "label": "Alfred North Whitehead (1861-1947)",
+      "id": "Whitehead",
+      "label": "Alfred North Whitehead",
       "school": "Process Philosophy",
-      "id": "Whitehead"
+      "lifetime": "1861-1947"
     },
     {
-      "label": "Martin Heidegger (1889-1976)",
+      "id": "Heidegger",
+      "label": "Martin Heidegger",
       "school": "Existentialism",
-      "id": "Heidegger"
+      "lifetime": "1889-1976"
     },
     {
-      "label": "Ludwig Wittgenstein (1889-1951)",
+      "id": "Wittgenstein",
+      "label": "Ludwig Wittgenstein",
       "school": "Analytic",
-      "id": "Wittgenstein"
+      "lifetime": "1889-1951"
     },
     {
-      "label": "Theodor Adorno (1903-1969)",
+      "id": "Adorno",
+      "label": "Theodor Adorno",
       "school": "Critical Theory",
-      "id": "Adorno"
+      "lifetime": "1903-1969"
     },
     {
-      "label": "Karl Popper (1902-1994)",
+      "id": "Popper",
+      "label": "Karl Popper",
       "school": "Critical Rationalism",
-      "id": "Popper"
+      "lifetime": "1902-1994"
     },
     {
-      "label": "Jean-Paul Sartre (1905-1980)",
+      "id": "Sartre",
+      "label": "Jean-Paul Sartre",
       "school": "Existentialism",
-      "id": "Sartre"
+      "lifetime": "1905-1980"
     },
     {
-      "label": "Simone de Beauvoir (1908-1986)",
+      "id": "Beauvoir",
+      "label": "Simone de Beauvoir",
       "school": "Existentialism",
-      "id": "Beauvoir"
+      "lifetime": "1908-1986"
     },
     {
-      "label": "Hannah Arendt (1906-1975)",
+      "id": "Arendt",
+      "label": "Hannah Arendt",
       "school": "Political Theory",
-      "id": "Arendt"
+      "lifetime": "1906-1975"
     },
     {
-      "label": "Albert Camus (1913-1960)",
+      "id": "Camus",
+      "label": "Albert Camus",
       "school": "Absurdism",
-      "id": "Camus"
+      "lifetime": "1913-1960"
     },
     {
-      "label": "Willard Van Orman Quine (1908-2000)",
+      "id": "Quine",
+      "label": "Willard Van Orman Quine",
       "school": "Analytic",
-      "id": "Quine"
+      "lifetime": "1908-2000"
     },
     {
-      "label": "A.J. Ayer (1910-1989)",
+      "id": "Ayer",
+      "label": "A.J. Ayer",
       "school": "Logical Positivism",
-      "id": "Ayer"
+      "lifetime": "1910-1989"
     },
     {
-      "label": "Maurice Merleau-Ponty (1908-1961)",
+      "id": "Merleau-Ponty",
+      "label": "Maurice Merleau-Ponty",
       "school": "Phenomenology",
-      "id": "Merleau-Ponty"
+      "lifetime": "1908-1961"
     },
     {
-      "label": "Michel Foucault (1926-1984)",
+      "id": "Foucault",
+      "label": "Michel Foucault",
       "school": "Post-structuralism",
-      "id": "Foucault"
+      "lifetime": "1926-1984"
     },
     {
-      "label": "Jacques Derrida (1930-2004)",
+      "id": "Derrida",
+      "label": "Jacques Derrida",
       "school": "Deconstruction",
-      "id": "Derrida"
+      "lifetime": "1930-2004"
     },
     {
-      "label": "Gilles Deleuze (1925-1995)",
+      "id": "Deleuze",
+      "label": "Gilles Deleuze",
       "school": "Post-structuralism",
-      "id": "Deleuze"
+      "lifetime": "1925-1995"
     },
     {
-      "label": "J\u00fcrgen Habermas (1929-)",
+      "id": "Habermas",
+      "label": "Jürgen Habermas (1929-)",
       "school": "Critical Theory",
-      "id": "Habermas"
+      "lifetime": "1929-"
     },
     {
-      "label": "John Rawls (1921-2002)",
+      "id": "Rawls",
+      "label": "John Rawls",
       "school": "Political Philosophy",
-      "id": "Rawls"
+      "lifetime": "1921-2002"
     },
     {
+      "id": "Chomsky",
       "label": "Noam Chomsky (1928-)",
-      "school": "Linguistics",
-      "id": "Chomsky"
+      "school": "Linguistics, Political Philosophy",
+      "lifetime": "1928-"
     },
     {
-      "label": "Thomas Kuhn (1922-1996)",
+      "id": "Kuhn",
+      "label": "Thomas Kuhn",
       "school": "Philosophy of Science",
-      "id": "Kuhn"
+      "lifetime": "1922-1996"
     },
     {
-      "label": "Saul Kripke (1940-)",
+      "id": "Kripke",
+      "label": "Saul Kripke",
       "school": "Analytic",
-      "id": "Kripke"
+      "lifetime": "1940-"
     },
     {
+      "id": "Singer",
       "label": "Peter Singer (1946-)",
-      "school": "Applied Ethics",
-      "id": "Singer"
+      "school": "Utilitarianism, Applied Ethics",
+      "lifetime": "1946-"
     },
     {
+      "id": "Nussbaum",
       "label": "Martha Nussbaum (1947-)",
-      "school": "Capabilities Approach",
-      "id": "Nussbaum"
+      "school": "Capabilities Approach, Feminist Philosophy",
+      "lifetime": "1947-"
     },
     {
+      "id": "Butler",
       "label": "Judith Butler (1956-)",
-      "school": "Gender Theory",
-      "id": "Butler"
+      "school": "Gender Theory, Queer Theory",
+      "lifetime": "1956-"
     },
     {
-      "label": "Slavoj \u017di\u017eek (1949-)",
-      "school": "Critical Theory",
-      "id": "Zizek"
+      "id": "Zizek",
+      "label": "Slavoj Žižek (1949-)",
+      "school": "Critical Theory, Psychoanalysis",
+      "lifetime": "1949-"
     },
     {
-      "label": "Charles Taylor (1931-)",
+      "id": "Taylor",
+      "label": "Charles Taylor",
       "school": "Communitarianism",
-      "id": "Taylor"
+      "lifetime": "1931-"
     },
     {
-      "label": "G.E. Moore (1873-1958)",
+      "id": "Moore",
+      "label": "G.E. Moore",
       "school": "Analytic",
-      "id": "Moore"
+      "lifetime": "1873-1958"
     },
     {
-      "label": "Frank P. Ramsey (1903-1930)",
+      "id": "Ramsey",
+      "label": "Frank P. Ramsey",
       "school": "Analytic",
-      "id": "Ramsey"
+      "lifetime": "1903-1930"
     },
     {
-      "label": "G.E.M. Anscombe (1919-2001)",
+      "id": "Anscombe",
+      "label": "G.E.M. Anscombe",
       "school": "Analytic",
-      "id": "Anscombe"
+      "lifetime": "1919-2001"
     },
     {
-      "label": "Michael Dummett (1925-2011)",
+      "id": "Dummett",
+      "label": "Michael Dummett",
       "school": "Analytic",
-      "id": "Dummett"
+      "lifetime": "1925-2011"
     },
     {
-      "label": "Alan Turing (1912-1954)",
+      "id": "Turing",
+      "label": "Alan Turing",
       "school": "Computer Science",
-      "id": "Turing"
+      "lifetime": "1912-1954"
     },
     {
-      "id": "Jung"
+      "id": "Dennett",
+      "label": "Daniel Dennett (1942-)",
+      "school": "Philosophy of Mind, Cognitive Science",
+      "lifetime": "1942-"
     },
     {
-      "id": "Gadamer"
+      "id": "Pinker",
+      "label": "Steven Pinker (1954-)",
+      "school": "Cognitive Psychology, Linguistics",
+      "lifetime": "1954-"
     },
     {
-      "id": "Horkheimer"
+      "id": "Haraway",
+      "label": "Donna Haraway (1944-)",
+      "school": "Feminist Studies, Posthumanism",
+      "lifetime": "1944-"
     },
     {
-      "id": "Feyerabend"
-    },
-    {
-      "id": "Jaspers"
-    },
-    {
-      "id": "Davidson"
-    },
-    {
-      "id": "Guattari"
-    },
-    {
-      "id": "Apel"
-    },
-    {
-      "id": "Nozick"
-    },
-    {
-      "id": "Lewis"
-    },
-    {
-      "id": "Regan"
-    },
-    {
-      "id": "Sen"
-    },
-    {
-      "id": "Spivak"
-    },
-    {
-      "id": "Badiou"
-    },
-    {
-      "id": "MacIntyre"
-    },
-    {
-      "id": "Austin"
-    },
-    {
-      "id": "Cavell"
+      "id": "Latour",
+      "label": "Bruno Latour (1947-2022)",
+      "school": "Actor-Network Theory, Philosophy of Science",
+      "lifetime": "1947-2022"
     }
   ],
-  "links": [
+  "edges": [
     {
-      "relation": ":influenced",
       "source": "Descartes",
       "target": "Spinoza",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Descartes",
       "target": "Leibniz",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":debated",
-      "source": "Spinoza",
-      "target": "Leibniz",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Locke",
       "target": "Berkeley",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Locke",
       "target": "Hume",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Locke",
       "target": "Voltaire",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":criticized",
-      "source": "Voltaire",
-      "target": "Rousseau",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Hume",
       "target": "Kant",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":collaborated",
-      "source": "Hume",
-      "target": "Smith",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Rousseau",
       "target": "Kant",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Kant",
       "target": "Hegel",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Kant",
       "target": "Schopenhauer",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Bentham",
-      "target": "Mill",
-      "key": 0
-    },
-    {
-      "relation": ":mentored",
-      "source": "Bentham",
-      "target": "Mill",
-      "key": 1
-    },
-    {
-      "relation": ":influenced",
       "source": "Hegel",
       "target": "Marx",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Hegel",
       "target": "Kierkegaard",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Mill",
-      "target": "Russell",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Mill",
-      "target": "Taylor",
-      "key": 0
-    },
-    {
-      "relation": ":inspired",
-      "source": "Kierkegaard",
-      "target": "Nietzsche",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Marx",
       "target": "Engels",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":inspired",
-      "source": "Marx",
-      "target": "Weber",
-      "key": 0
+      "source": "Bentham",
+      "target": "Mill",
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
+      "source": "Mill",
+      "target": "Russell",
+      "relation": ":influenced"
+    },
+    {
       "source": "Peirce",
       "target": "James",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Peirce",
-      "target": "Dewey",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "James",
       "target": "Dewey",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":corresponded",
-      "source": "James",
-      "target": "Husserl",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Nietzsche",
       "target": "Heidegger",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Nietzsche",
       "target": "Foucault",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Frege",
       "target": "Russell",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Frege",
       "target": "Wittgenstein",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Frege",
-      "target": "Wittgenstein",
-      "key": 1
-    },
-    {
-      "relation": ":debated",
-      "source": "Frege",
-      "target": "Husserl",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Husserl",
       "target": "Heidegger",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Husserl",
       "target": "Merleau-Ponty",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Freud",
       "target": "Adorno",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":collaborated",
-      "source": "Freud",
-      "target": "Jung",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Weber",
       "target": "Habermas",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Weber",
-      "target": "Adorno",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Russell",
       "target": "Wittgenstein",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":mentored",
-      "source": "Russell",
-      "target": "Wittgenstein",
-      "key": 1
+      "source": "Whitehead",
+      "target": "Russell",
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Russell",
-      "target": "Whitehead",
-      "key": 0
-    },
-    {
-      "relation": ":collaborated",
-      "source": "Russell",
-      "target": "Whitehead",
-      "key": 1
-    },
-    {
-      "relation": ":influenced",
-      "source": "Russell",
-      "target": "Ayer",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Heidegger",
       "target": "Sartre",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
       "source": "Heidegger",
       "target": "Arendt",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":mentored",
-      "source": "Heidegger",
-      "target": "Gadamer",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Wittgenstein",
       "target": "Quine",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Quine",
-      "key": 1
-    },
-    {
-      "relation": ":debated",
-      "source": "Wittgenstein",
-      "target": "Popper",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Moore",
-      "key": 0
-    },
-    {
-      "relation": ":collaborated",
-      "source": "Wittgenstein",
-      "target": "Ramsey",
-      "key": 0
-    },
-    {
-      "relation": ":mentored",
-      "source": "Wittgenstein",
-      "target": "Anscombe",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Dummett",
-      "key": 0
-    },
-    {
-      "relation": ":debated",
-      "source": "Wittgenstein",
-      "target": "Turing",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Ayer",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Kripke",
-      "key": 0
-    },
-    {
-      "label": "J.L. Austin (1911-1960)",
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Austin",
-      "key": 0
-    },
-    {
-      "label": "Stanley Cavell (1926-2018)",
-      "relation": ":influenced",
-      "source": "Wittgenstein",
-      "target": "Cavell",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Adorno",
-      "target": "Habermas",
-      "key": 0
-    },
-    {
-      "relation": ":collaborated",
-      "source": "Adorno",
-      "target": "Horkheimer",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
-      "source": "Popper",
-      "target": "Kuhn",
-      "key": 0
-    },
-    {
-      "relation": ":mentored",
-      "source": "Popper",
-      "target": "Feyerabend",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Sartre",
       "target": "Beauvoir",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":collaborated",
-      "source": "Sartre",
-      "target": "Beauvoir",
-      "key": 1
-    },
-    {
-      "relation": ":influenced",
       "source": "Sartre",
       "target": "Camus",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":debated",
-      "source": "Sartre",
-      "target": "Camus",
-      "key": 1
-    },
-    {
-      "relation": ":collaborated",
-      "source": "Sartre",
-      "target": "Merleau-Ponty",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Beauvoir",
       "target": "Butler",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":mentored",
-      "source": "Arendt",
-      "target": "Jaspers",
-      "key": 0
+      "source": "Adorno",
+      "target": "Habermas",
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
+      "source": "Popper",
+      "target": "Kuhn",
+      "relation": ":influenced"
+    },
+    {
       "source": "Quine",
       "target": "Kripke",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Quine",
-      "target": "Davidson",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Foucault",
       "target": "Butler",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":debated",
-      "source": "Foucault",
-      "target": "Derrida",
-      "key": 0
-    },
-    {
-      "relation": ":debated",
-      "source": "Foucault",
-      "target": "Chomsky",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Derrida",
       "target": "Butler",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":debated",
-      "source": "Derrida",
-      "target": "Habermas",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Deleuze",
       "target": "Zizek",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":collaborated",
-      "source": "Deleuze",
-      "target": "Guattari",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Habermas",
       "target": "Rawls",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":collaborated",
+      "source": "Rawls",
+      "target": "Nussbaum",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Singer",
+      "target": "Nussbaum",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Taylor",
+      "target": "Nussbaum",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Spinoza",
+      "target": "Leibniz",
+      "relation": ":debated"
+    },
+    {
+      "source": "Voltaire",
+      "target": "Rousseau",
+      "relation": ":criticized"
+    },
+    {
+      "source": "Hume",
+      "target": "Smith",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Bentham",
+      "target": "Mill",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Mill",
+      "target": "Taylor",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Kierkegaard",
+      "target": "Nietzsche",
+      "relation": ":inspired"
+    },
+    {
+      "source": "Marx",
+      "target": "Weber",
+      "relation": ":inspired"
+    },
+    {
+      "source": "Peirce",
+      "target": "Dewey",
+      "relation": ":influenced"
+    },
+    {
+      "source": "James",
+      "target": "Husserl",
+      "relation": ":corresponded"
+    },
+    {
+      "source": "Frege",
+      "target": "Husserl",
+      "relation": ":debated"
+    },
+    {
+      "source": "Russell",
+      "target": "Whitehead",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Russell",
+      "target": "Ayer",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Freud",
+      "target": "Jung",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Weber",
+      "target": "Adorno",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Heidegger",
+      "target": "Gadamer",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Popper",
+      "relation": ":debated"
+    },
+    {
+      "source": "Sartre",
+      "target": "Merleau-Ponty",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Adorno",
+      "target": "Horkheimer",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Popper",
+      "target": "Feyerabend",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Beauvoir",
+      "target": "Sartre",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Arendt",
+      "target": "Jaspers",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Camus",
+      "target": "Sartre",
+      "relation": ":debated"
+    },
+    {
+      "source": "Quine",
+      "target": "Davidson",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Foucault",
+      "target": "Derrida",
+      "relation": ":debated"
+    },
+    {
+      "source": "Derrida",
+      "target": "Habermas",
+      "relation": ":debated"
+    },
+    {
+      "source": "Deleuze",
+      "target": "Guattari",
+      "relation": ":collaborated"
+    },
+    {
       "source": "Habermas",
       "target": "Apel",
-      "key": 0
+      "relation": ":collaborated"
     },
     {
-      "relation": ":influenced",
-      "source": "Rawls",
-      "target": "Nussbaum",
-      "key": 0
-    },
-    {
-      "relation": ":debated",
       "source": "Rawls",
       "target": "Nozick",
-      "key": 0
+      "relation": ":debated"
     },
     {
-      "relation": ":corresponded",
+      "source": "Chomsky",
+      "target": "Foucault",
+      "relation": ":debated"
+    },
+    {
       "source": "Kuhn",
       "target": "Feyerabend",
-      "key": 0
+      "relation": ":corresponded"
     },
     {
-      "relation": ":debated",
       "source": "Kripke",
       "target": "Lewis",
-      "key": 0
+      "relation": ":debated"
     },
     {
-      "relation": ":influenced",
-      "source": "Singer",
-      "target": "Nussbaum",
-      "key": 0
-    },
-    {
-      "relation": ":influenced",
       "source": "Singer",
       "target": "Regan",
-      "key": 0
+      "relation": ":influenced"
     },
     {
-      "relation": ":influenced",
-      "source": "Nussbaum",
-      "target": "Taylor",
-      "key": 0
-    },
-    {
-      "relation": ":collaborated",
       "source": "Nussbaum",
       "target": "Sen",
-      "key": 0
+      "relation": ":collaborated"
     },
     {
-      "relation": ":collaborated",
       "source": "Butler",
       "target": "Spivak",
-      "key": 0
+      "relation": ":collaborated"
     },
     {
-      "relation": ":collaborated",
       "source": "Zizek",
       "target": "Badiou",
-      "key": 0
+      "relation": ":collaborated"
     },
     {
-      "relation": ":corresponded",
       "source": "Taylor",
       "target": "MacIntyre",
-      "key": 0
+      "relation": ":corresponded"
+    },
+    {
+      "source": "Frege",
+      "target": "Wittgenstein",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Russell",
+      "target": "Wittgenstein",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Moore",
+      "target": "Wittgenstein",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Ramsey",
+      "relation": ":collaborated"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Anscombe",
+      "relation": ":mentored"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Dummett",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Turing",
+      "relation": ":debated"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Ayer",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Quine",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Kripke",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Austin",
+      "label": "J.L. Austin (1911-1960)",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Wittgenstein",
+      "target": "Cavell",
+      "label": "Stanley Cavell (1926-2018)",
+      "relation": ":influenced"
+    },
+    {
+      "source": "Habermas",
+      "target": "Chomsky",
+      "relation": "debated"
+    },
+    {
+      "source": "Singer",
+      "target": "Nussbaum",
+      "relation": "collaborated"
+    },
+    {
+      "source": "Butler",
+      "target": "Foucault",
+      "relation": "influenced by"
+    },
+    {
+      "source": "Zizek",
+      "target": "Lacan",
+      "relation": "influenced by"
+    },
+    {
+      "source": "Dennett",
+      "target": "Quine",
+      "relation": "influenced by"
+    },
+    {
+      "source": "Pinker",
+      "target": "Chomsky",
+      "relation": "influenced by"
+    },
+    {
+      "source": "Haraway",
+      "target": "Butler",
+      "relation": "collaborated"
+    },
+    {
+      "source": "Latour",
+      "target": "Foucault",
+      "relation": "influenced by"
+    },
+    {
+      "source": "Nussbaum",
+      "target": "Sen",
+      "relation": "collaborated"
+    },
+    {
+      "source": "Chomsky",
+      "target": "Foucault",
+      "relation": "debated"
     }
   ]
 }
