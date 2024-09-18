@@ -3,283 +3,339 @@
   "nodes": [
     {
       "id": "Descartes",
-      "label": "René Descartes (1596-1650)",
-      "school": "Rationalism"
+      "label": "René Descartes",
+      "school": "Rationalism",
+      "lifetime": "1596-1650"
     },
     {
       "id": "Spinoza",
-      "label": "Baruch Spinoza (1632-1677)",
-      "school": "Rationalism"
+      "label": "Baruch Spinoza",
+      "school": "Rationalism",
+      "lifetime": "1632-1677"
     },
     {
       "id": "Locke",
-      "label": "John Locke (1632-1704)",
-      "school": "Empiricism"
+      "label": "John Locke",
+      "school": "Empiricism",
+      "lifetime": "1632-1704"
     },
     {
       "id": "Leibniz",
-      "label": "Gottfried Leibniz (1646-1716)",
-      "school": "Rationalism"
+      "label": "Gottfried Leibniz",
+      "school": "Rationalism",
+      "lifetime": "1646-1716"
     },
     {
       "id": "Berkeley",
-      "label": "George Berkeley (1685-1753)",
-      "school": "Idealism"
+      "label": "George Berkeley",
+      "school": "Idealism",
+      "lifetime": "1685-1753"
     },
     {
       "id": "Voltaire",
-      "label": "Voltaire (1694-1778)",
-      "school": "Enlightenment"
+      "label": "Voltaire",
+      "school": "Enlightenment",
+      "lifetime": "1694-1778"
     },
     {
       "id": "Hume",
-      "label": "David Hume (1711-1776)",
-      "school": "Empiricism"
+      "label": "David Hume",
+      "school": "Empiricism",
+      "lifetime": "1711-1776"
     },
     {
       "id": "Rousseau",
-      "label": "Jean-Jacques Rousseau (1712-1778)",
-      "school": "Romanticism"
+      "label": "Jean-Jacques Rousseau",
+      "school": "Romanticism",
+      "lifetime": "1712-1778"
     },
     {
       "id": "Smith",
-      "label": "Adam Smith (1723-1790)",
-      "school": "Classical Economics"
+      "label": "Adam Smith",
+      "school": "Classical Economics",
+      "lifetime": "1723-1790"
     },
     {
       "id": "Kant",
-      "label": "Immanuel Kant (1724-1804)",
-      "school": "German Idealism"
+      "label": "Immanuel Kant",
+      "school": "German Idealism",
+      "lifetime": "1724-1804"
     },
     {
       "id": "Bentham",
-      "label": "Jeremy Bentham (1748-1832)",
-      "school": "Utilitarianism"
+      "label": "Jeremy Bentham",
+      "school": "Utilitarianism",
+      "lifetime": "1748-1832"
     },
     {
       "id": "Hegel",
-      "label": "Georg Wilhelm Friedrich Hegel (1770-1831)",
-      "school": "German Idealism"
+      "label": "Georg Wilhelm Friedrich Hegel",
+      "school": "German Idealism",
+      "lifetime": "1770-1831"
     },
     {
       "id": "Schopenhauer",
-      "label": "Arthur Schopenhauer (1788-1860)",
-      "school": "Pessimism"
+      "label": "Arthur Schopenhauer",
+      "school": "Pessimism",
+      "lifetime": "1788-1860"
     },
     {
       "id": "Mill",
-      "label": "John Stuart Mill (1806-1873)",
-      "school": "Utilitarianism"
+      "label": "John Stuart Mill",
+      "school": "Utilitarianism",
+      "lifetime": "1806-1873"
     },
     {
       "id": "Kierkegaard",
-      "label": "Søren Kierkegaard (1813-1855)",
-      "school": "Existentialism"
+      "label": "Søren Kierkegaard",
+      "school": "Existentialism",
+      "lifetime": "1813-1855"
     },
     {
       "id": "Marx",
-      "label": "Karl Marx (1818-1883)",
-      "school": "Marxism"
+      "label": "Karl Marx",
+      "school": "Marxism",
+      "lifetime": "1818-1883"
     },
     {
       "id": "Engels",
-      "label": "Friedrich Engels (1820-1895)",
-      "school": "Marxism"
+      "label": "Friedrich Engels",
+      "school": "Marxism",
+      "lifetime": "1820-1895"
     },
     {
       "id": "Peirce",
-      "label": "Charles Sanders Peirce (1839-1914)",
-      "school": "Pragmatism"
+      "label": "Charles Sanders Peirce",
+      "school": "Pragmatism",
+      "lifetime": "1839-1914"
     },
     {
       "id": "James",
-      "label": "William James (1842-1910)",
-      "school": "Pragmatism"
+      "label": "William James",
+      "school": "Pragmatism",
+      "lifetime": "1842-1910"
     },
     {
       "id": "Nietzsche",
-      "label": "Friedrich Nietzsche (1844-1900)",
-      "school": "Existentialism"
+      "label": "Friedrich Nietzsche",
+      "school": "Existentialism",
+      "lifetime": "1844-1900"
     },
     {
       "id": "Frege",
-      "label": "Gottlob Frege (1848-1925)",
-      "school": "Analytic"
+      "label": "Gottlob Frege",
+      "school": "Analytic",
+      "lifetime": "1848-1925"
     },
     {
       "id": "Husserl",
-      "label": "Edmund Husserl (1859-1938)",
-      "school": "Phenomenology"
+      "label": "Edmund Husserl",
+      "school": "Phenomenology",
+      "lifetime": "1859-1938"
     },
     {
       "id": "Dewey",
-      "label": "John Dewey (1859-1952)",
-      "school": "Pragmatism"
+      "label": "John Dewey",
+      "school": "Pragmatism",
+      "lifetime": "1859-1952"
     },
     {
       "id": "Freud",
-      "label": "Sigmund Freud (1856-1939)",
-      "school": "Psychoanalysis"
+      "label": "Sigmund Freud",
+      "school": "Psychoanalysis",
+      "lifetime": "1856-1939"
     },
     {
       "id": "Weber",
-      "label": "Max Weber (1864-1920)",
-      "school": "Sociology"
+      "label": "Max Weber",
+      "school": "Sociology",
+      "lifetime": "1864-1920"
     },
     {
       "id": "Russell",
-      "label": "Bertrand Russell (1872-1970)",
-      "school": "Analytic"
+      "label": "Bertrand Russell",
+      "school": "Analytic",
+      "lifetime": "1872-1970"
     },
     {
       "id": "Whitehead",
-      "label": "Alfred North Whitehead (1861-1947)",
-      "school": "Process Philosophy"
+      "label": "Alfred North Whitehead",
+      "school": "Process Philosophy",
+      "lifetime": "1861-1947"
     },
     {
       "id": "Heidegger",
-      "label": "Martin Heidegger (1889-1976)",
-      "school": "Existentialism"
+      "label": "Martin Heidegger",
+      "school": "Existentialism",
+      "lifetime": "1889-1976"
     },
     {
       "id": "Wittgenstein",
-      "label": "Ludwig Wittgenstein (1889-1951)",
-      "school": "Analytic"
+      "label": "Ludwig Wittgenstein",
+      "school": "Analytic",
+      "lifetime": "1889-1951"
     },
     {
       "id": "Adorno",
-      "label": "Theodor Adorno (1903-1969)",
-      "school": "Critical Theory"
+      "label": "Theodor Adorno",
+      "school": "Critical Theory",
+      "lifetime": "1903-1969"
     },
     {
       "id": "Popper",
-      "label": "Karl Popper (1902-1994)",
-      "school": "Critical Rationalism"
+      "label": "Karl Popper",
+      "school": "Critical Rationalism",
+      "lifetime": "1902-1994"
     },
     {
       "id": "Sartre",
-      "label": "Jean-Paul Sartre (1905-1980)",
-      "school": "Existentialism"
+      "label": "Jean-Paul Sartre",
+      "school": "Existentialism",
+      "lifetime": "1905-1980"
     },
     {
       "id": "Beauvoir",
-      "label": "Simone de Beauvoir (1908-1986)",
-      "school": "Existentialism"
+      "label": "Simone de Beauvoir",
+      "school": "Existentialism",
+      "lifetime": "1908-1986"
     },
     {
       "id": "Arendt",
-      "label": "Hannah Arendt (1906-1975)",
-      "school": "Political Theory"
+      "label": "Hannah Arendt",
+      "school": "Political Theory",
+      "lifetime": "1906-1975"
     },
     {
       "id": "Camus",
-      "label": "Albert Camus (1913-1960)",
-      "school": "Absurdism"
+      "label": "Albert Camus",
+      "school": "Absurdism",
+      "lifetime": "1913-1960"
     },
     {
       "id": "Quine",
-      "label": "Willard Van Orman Quine (1908-2000)",
-      "school": "Analytic"
+      "label": "Willard Van Orman Quine",
+      "school": "Analytic",
+      "lifetime": "1908-2000"
     },
     {
       "id": "Ayer",
-      "label": "A.J. Ayer (1910-1989)",
-      "school": "Logical Positivism"
+      "label": "A.J. Ayer",
+      "school": "Logical Positivism",
+      "lifetime": "1910-1989"
     },
     {
       "id": "Merleau-Ponty",
-      "label": "Maurice Merleau-Ponty (1908-1961)",
-      "school": "Phenomenology"
+      "label": "Maurice Merleau-Ponty",
+      "school": "Phenomenology",
+      "lifetime": "1908-1961"
     },
     {
       "id": "Foucault",
-      "label": "Michel Foucault (1926-1984)",
-      "school": "Post-structuralism"
+      "label": "Michel Foucault",
+      "school": "Post-structuralism",
+      "lifetime": "1926-1984"
     },
     {
       "id": "Derrida",
-      "label": "Jacques Derrida (1930-2004)",
-      "school": "Deconstruction"
+      "label": "Jacques Derrida",
+      "school": "Deconstruction",
+      "lifetime": "1930-2004"
     },
     {
       "id": "Deleuze",
-      "label": "Gilles Deleuze (1925-1995)",
-      "school": "Post-structuralism"
+      "label": "Gilles Deleuze",
+      "school": "Post-structuralism",
+      "lifetime": "1925-1995"
     },
     {
       "id": "Habermas",
-      "label": "Jürgen Habermas (1929-)",
-      "school": "Critical Theory"
+      "label": "Jürgen Habermas",
+      "school": "Critical Theory",
+      "lifetime": "1929-"
     },
     {
       "id": "Rawls",
-      "label": "John Rawls (1921-2002)",
-      "school": "Political Philosophy"
+      "label": "John Rawls",
+      "school": "Political Philosophy",
+      "lifetime": "1921-2002"
     },
     {
       "id": "Chomsky",
-      "label": "Noam Chomsky (1928-)",
-      "school": "Linguistics"
+      "label": "Noam Chomsky",
+      "school": "Linguistics",
+      "lifetime": "1928-"
     },
     {
       "id": "Kuhn",
-      "label": "Thomas Kuhn (1922-1996)",
-      "school": "Philosophy of Science"
+      "label": "Thomas Kuhn",
+      "school": "Philosophy of Science",
+      "lifetime": "1922-1996"
     },
     {
       "id": "Kripke",
-      "label": "Saul Kripke (1940-)",
-      "school": "Analytic"
+      "label": "Saul Kripke",
+      "school": "Analytic",
+      "lifetime": "1940-"
     },
     {
       "id": "Singer",
-      "label": "Peter Singer (1946-)",
-      "school": "Applied Ethics"
+      "label": "Peter Singer",
+      "school": "Applied Ethics",
+      "lifetime": "1946-"
     },
     {
       "id": "Nussbaum",
-      "label": "Martha Nussbaum (1947-)",
-      "school": "Capabilities Approach"
+      "label": "Martha Nussbaum",
+      "school": "Capabilities Approach",
+      "lifetime": "1947-"
     },
     {
       "id": "Butler",
-      "label": "Judith Butler (1956-)",
-      "school": "Gender Theory"
+      "label": "Judith Butler",
+      "school": "Gender Theory",
+      "lifetime": "1956-"
     },
     {
       "id": "Zizek",
-      "label": "Slavoj Žižek (1949-)",
-      "school": "Critical Theory"
+      "label": "Slavoj Žižek",
+      "school": "Critical Theory",
+      "lifetime": "1949-"
     },
     {
       "id": "Taylor",
-      "label": "Charles Taylor (1931-)",
-      "school": "Communitarianism"
+      "label": "Charles Taylor",
+      "school": "Communitarianism",
+      "lifetime": "1931-"
     },
     {
       "id": "Moore",
-      "label": "G.E. Moore (1873-1958)",
-      "school": "Analytic"
+      "label": "G.E. Moore",
+      "school": "Analytic",
+      "lifetime": "1873-1958"
     },
     {
       "id": "Ramsey",
-      "label": "Frank P. Ramsey (1903-1930)",
-      "school": "Analytic"
+      "label": "Frank P. Ramsey",
+      "school": "Analytic",
+      "lifetime": "1903-1930"
     },
     {
       "id": "Anscombe",
-      "label": "G.E.M. Anscombe (1919-2001)",
-      "school": "Analytic"
+      "label": "G.E.M. Anscombe",
+      "school": "Analytic",
+      "lifetime": "1919-2001"
     },
     {
       "id": "Dummett",
-      "label": "Michael Dummett (1925-2011)",
-      "school": "Analytic"
+      "label": "Michael Dummett",
+      "school": "Analytic",
+      "lifetime": "1925-2011"
     },
     {
       "id": "Turing",
-      "label": "Alan Turing (1912-1954)",
-      "school": "Computer Science"
+      "label": "Alan Turing",
+      "school": "Computer Science",
+      "lifetime": "1912-1954"
     }
   ],
   "edges": [
