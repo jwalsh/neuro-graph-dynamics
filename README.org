@@ -1,1 +1,70 @@
+#+TITLE: Neurosymbolic Knowledge Graph
 
+* Project Description
+This project implements a web-based Neurosymbolic Knowledge Graph system that allows users to visualize, query, and enrich philosophical concepts and their relationships using various AI services.
+
+* For Users
+** Prerequisites
+- Python 3.7+
+- Flask
+- NetworkX
+- Matplotlib
+- Boto3 (for AWS Bedrock integration)
+- Google AI API (for Gemini integration)
+- Ollama (for local LLM support)
+
+** Installation
+1. Clone the repository:
+   #+BEGIN_SRC shell
+   git clone https://github.com/yourusername/neurosymbolic-knowledge-graph.git
+   cd neurosymbolic-knowledge-graph
+   #+END_SRC
+
+2. Install dependencies:
+   #+BEGIN_SRC shell
+   pip install -r requirements.txt
+   #+END_SRC
+
+3. Set up environment variables:
+   - AWS_ACCESS_KEY_ID
+   - AWS_SECRET_ACCESS_KEY
+   - GOOGLE_AI_API_KEY
+
+** Usage
+1. Run the Flask application:
+   #+BEGIN_SRC shell
+   python app.py
+   #+END_SRC
+
+2. Open a web browser and navigate to http://localhost:5000
+
+3. Use the interface to query nodes, enrich information, and visualize the knowledge graph.
+
+* For Developers
+** Project Structure
+- app.py: Main Flask application
+- bedrock_helper.py: AWS Bedrock integration
+- gemini_helper.py: Google AI (Gemini) integration
+- ollama_helper.py: Ollama integration for local LLM support
+- database.py: SQLite database operations
+- static/css/styles.css: CSS styles for the web interface
+- templates/index.html: HTML template for the web interface
+
+** Adding New Features
+1. Implement new functionality in the appropriate helper file or create a new one if needed.
+2. Update app.py to include new routes or integrate new features.
+3. Modify the HTML and CSS files to reflect changes in the user interface.
+4. Update this README with any new dependencies or usage instructions.
+
+** Running Tests
+(Add instructions for running tests once they are implemented)
+
+** Contributing
+1. Fork the repository
+2. Create a new branch for your feature
+3. Commit your changes
+4. Push to your fork
+5. Submit a pull request
+
+* License
+(Add your chosen license information here)

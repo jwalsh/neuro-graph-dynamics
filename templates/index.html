@@ -6,135 +6,176 @@
     <title>Neurosymbolic Knowledge Graph</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Neurosymbolic Knowledge Graph</h1>
     </header>
+    <nav>
+        <ul>
+            {% for link in additional_links %}
+            <li><a href="{{ link.url }}">{{ link.text }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
     <main>
         <div class="container">
-            <div class="form-container">
-                <h2>Add Node</h2>
-                <form id="add-node-form">
-                    <label for="node-name" class="sr-only">Node name</label>
-                    <input type="text" id="node-name" placeholder="Node name" required>
-                    <label for="node-attributes" class="sr-only">Node attributes</label>
-                    <input type="text" id="node-attributes" placeholder="Attributes (JSON)">
-                    <button type="submit">Add Node</button>
-                </form>
+            <div class="left-column">
+                <h2>Node Query and Enrichment</h2>
+                <select id="node-select">
+                    <option value="">Select a node</option>
+                </select>
+                <button id="query-node-btn">Query Node</button>
+                <button id="enrich-node-btn">Enrich Node</button>
             </div>
-            <div class="form-container">
-                <h2>Add Edge</h2>
-                <form id="add-edge-form">
-                    <label for="node1" class="sr-only">Node 1</label>
-                    <input type="text" id="node1" placeholder="Node 1" required>
-                    <label for="node2" class="sr-only">Node 2</label>
-                    <input type="text" id="node2" placeholder="Node 2" required>
-                    <label for="relation" class="sr-only">Relation</label>
-                    <input type="text" id="relation" placeholder="Relation">
-                    <button type="submit">Add Edge</button>
-                </form>
-            </div>
-        </div>
-        <div class="container">
-            <div class="form-container">
-                <h2>Query Node</h2>
-                <form id="query-node-form">
-                    <label for="query-node" class="sr-only">Node name</label>
-                    <input type="text" id="query-node" placeholder="Node name" required>
-                    <button type="submit">Query</button>
-                </form>
-                <pre id="query-result" aria-live="polite"></pre>
-            </div>
-            <div class="form-container">
-                <h2>Load Graph</h2>
-                <label for="graph-file" class="sr-only">Select JSON file</label>
-                <input type="file" id="graph-file" accept=".json">
-                <button id="load-graph-btn">Load Graph</button>
+            <div class="right-column">
+                <div id="node-info-container">
+                    <pre id="node-info"></pre>
+                    <i class="copy-icon fas fa-copy" data-clipboard-target="#node-info"></i>
+                </div>
             </div>
         </div>
         <div id="graph-container">
-            <h2>Graph Visualization</h2>
-            <div class="mermaid" id="mermaid-graph"></div>
+            <h2>Knowledge Graph Visualization</h2>
+            <div id="mermaid-graph"></div>
         </div>
-        <div class="analytics-container">
-            <h2>Analytics</h2>
-            <div class="chart" id="analytics-chart"></div>
+        <div id="bedrock-test">
+            <h2>Test Bedrock Model</h2>
+            <input type="text" id="bedrock-model-id" placeholder="Model ID (default: anthropic.claude-v2)">
+            <textarea id="bedrock-prompt" placeholder="Enter your prompt"></textarea>
+            <textarea id="bedrock-system-prompt" placeholder="Enter system prompt (optional)"></textarea>
+            <button id="test-bedrock-btn">Test Bedrock</button>
+            <div id="bedrock-response"></div>
         </div>
     </main>
 
     <script>
+        function escapeLabel(label) {
+            return label.replace(/[&<>'"]/g, function(char) {
+                switch (char) {
+                    case '&': return '&amp;';
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case "'": return '&#39;';
+                    case '"': return '&quot;';
+                    default: return char;
+                }
+            });
+        }
+
         $(document).ready(function() {
-            function updateGraph() {
-                $.get('/visualize', function(data) {
-                    $('#mermaid-graph').empty().removeAttr('data-processed');
-                    $('#mermaid-graph').text(data.mermaid_graph);
-                    mermaid.init(undefined, $('#mermaid-graph'));
+            // Initialize clipboard.js
+            new ClipboardJS('.copy-icon');
+
+            // Load nodes
+            $.get('/get_nodes', function(nodes) {
+                var select = $('#node-select');
+                nodes.forEach(function(node) {
+                    select.append($('<option></option>').val(node).text(node));
+                });
+            });
+            
+            // Query node
+            $('#query-node-btn').click(function() {
+                var nodeName = $('#node-select').val();
+                
+                if (!nodeName) {
+                    alert('Please select a node.');
+                    return;
+                }
+                
+                $.ajax({
+                    url: '/enrich_node',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        node_name: nodeName
+                    }),
+                    success: function(response) {
+                        $('#node-info').text(response.original_info);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#node-info').text('Error: ' + error);
+                    }
+                });
+            });
+
+            // Enrich node
+            $('#enrich-node-btn').click(function() {
+                var nodeName = $('#node-select').val();
+                
+                if (!nodeName) {
+                    alert('Please select a node.');
+                    return;
+                }
+                
+                $.ajax({
+                    url: '/enrich_node',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        node_name: nodeName
+                    }),
+                    success: function(response) {
+                        $('#node-info').text('Original Info:\n' + response.original_info + '\n\nEnriched Info:\n' + response.enriched_info);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#node-info').text('Error: ' + error);
+                    }
+                });
+            });
+
+            // Test Bedrock
+            $('#test-bedrock-btn').click(function() {
+                var modelId = $('#bedrock-model-id').val() || 'anthropic.claude-v2';
+                var prompt = $('#bedrock-prompt').val();
+                var systemPrompt = $('#bedrock-system-prompt').val();
+
+                if (!prompt) {
+                    alert('Please enter a prompt.');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/test_bedrock',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        model_id: modelId,
+                        prompt: prompt,
+                        system_prompt: systemPrompt
+                    }),
+                    success: function(response) {
+                        $('#bedrock-response').text(response.response);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#bedrock-response').text('Error: ' + error);
+                    }
+                });
+            });
+
+            // Load and render graph
+            function loadAndRenderGraph() {
+                $.get('/graph_data', function(data) {
+                    var nodes = data.nodes;
+                    var links = data.links;
+                    var mermaidCode = 'graph TD\n';
+
+                    links.forEach(function(link) {
+                        mermaidCode += `    ${escapeLabel(link.source)}["${escapeLabel(nodes.find(n => n.id === link.source).label || link.source)}"] -->|${escapeLabel(link.relation)}| ${escapeLabel(link.target)}["${escapeLabel(nodes.find(n => n.id === link.target).label || link.target)}"]\n`;
+                    });
+
+                    var mermaidDiv = document.getElementById('mermaid-graph');
+                    mermaidDiv.innerHTML = mermaidCode;
+                    mermaid.init(undefined, mermaidDiv);
                 });
             }
 
-            $('#add-node-form').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '/add_node',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        node: $('#node-name').val(),
-                        attributes: $('#node-attributes').val() ? JSON.parse($('#node-attributes').val()) : {}
-                    }),
-                    success: function(response) {
-                        alert(response.message);
-                        updateGraph();
-                    }
-                });
-            });
-
-            $('#add-edge-form').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '/add_edge',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        node1: $('#node1').val(),
-                        node2: $('#node2').val(),
-                        relation: $('#relation').val()
-                    }),
-                    success: function(response) {
-                        alert(response.message);
-                        updateGraph();
-                    }
-                });
-            });
-
-            $('#query-node-form').submit(function(e) {
-                e.preventDefault();
-                $.get('/query_node', { node: $('#query-node').val() }, function(data) {
-                    $('#query-result').text(data.result);
-                });
-            });
-
-            $('#load-graph-btn').click(function() {
-                var file = $('#graph-file')[0].files[0];
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $.ajax({
-                        url: '/load_graph',
-                        method: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({file_content: e.target.result}),
-                        success: function(response) {
-                            alert(response.message);
-                            updateGraph();
-                        }
-                    });
-                };
-                reader.readAsText(file);
-            });
-
-            updateGraph();
+            // Initial graph load
+            loadAndRenderGraph();
         });
     </script>
 </body>

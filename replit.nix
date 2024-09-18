@@ -1,5 +1,6 @@
 {pkgs}: {
   deps = [
+    pkgs.awscli2
     pkgs.ollama
     pkgs.jq
     pkgs.emacs29

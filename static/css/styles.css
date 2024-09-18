@@ -25,34 +25,21 @@ h1, h2 {
 /* Layout */
 .container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.form-container {
-    width: 100%;
-    margin-bottom: 20px;
+.left-column {
+    width: 30%;
 }
 
-@media (min-width: 768px) {
-    .form-container {
-        width: 48%;
-    }
+.right-column {
+    width: 65%;
 }
 
 /* Forms */
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow);
-}
-
-input[type="text"],
-input[type="file"],
-button {
+select, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -89,17 +76,39 @@ button:focus {
 }
 
 /* Query result */
-#query-result {
+#node-info-container {
+    position: relative;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
+}
+
+#node-info {
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: monospace;
     font-size: 14px;
     max-height: 300px;
     overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+/* Copy button styles */
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background-color: #e0e0e0;
 }
 
 /* Accessibility */
@@ -113,22 +122,4 @@ button:focus {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
-}
-
-/* Future analytics features (placeholder) */
-.analytics-container {
-    display: none; /* Hidden by default */
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow);
-}
-
-.chart {
-    width: 100%;
-    height: 300px;
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
 }

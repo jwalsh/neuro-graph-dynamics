@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, jsonify
 import networkx as nx
 import json
 from community import community_louvain
+from flask import Flask, render_template, request, jsonify
+from bedrock_helper import list_bedrock_models, invoke_bedrock_model, enrich_node_info, query_knowledge_base
 
 app = Flask(__name__)
 
@@ -9,133 +10,128 @@ class NeurosymbolicKnowledgeGraph:
     def __init__(self):
         self.graph = nx.Graph()
 
-    def add_node(self, node, attributes=None):
-        self.graph.add_node(node, **attributes if attributes else {})
-
-    def add_edge(self, node1, node2, attributes=None):
-        self.graph.add_edge(node1, node2, **attributes if attributes else {})
-
-    def query(self, node):
-        if node not in self.graph:
-            return f"Node '{node}' not found in the graph."
-        
-        neighbors = list(self.graph.neighbors(node))
-        node_data = self.graph.nodes[node]
-        edges = self.graph.edges(node, data=True)
-        
-        result = f"Node: {node}\n"
-        result += f"Attributes: {node_data}\n"
-        result += f"Neighbors: {neighbors}\n"
-        result += "Edges:\n"
-        for edge in edges:
-            result += f"  - {edge[0]} -> {edge[1]}: {edge[2]}\n"
-        
-        return result
-
-    def save_graph(self, filename='knowledge_graph.json'):
-        data = nx.node_link_data(self.graph)
-        with open(filename, 'w') as f:
-            json.dump(data, f, indent=2)
-
     def load_graph(self, filename='knowledge_graph.json'):
         try:
             with open(filename, 'r') as f:
                 data = json.load(f)
-            # Convert 'edges' to 'links' if necessary
-            if 'edges' in data and 'links' not in data:
-                data['links'] = data.pop('edges')
             self.graph = nx.node_link_graph(data)
             print(f"Graph loaded from {filename}")
         except FileNotFoundError:
             print(f"File {filename} not found. Starting with an empty graph.")
 
-    def export_to_mermaid(self):
-        mermaid_output = "graph TD\n"
-        for edge in self.graph.edges(data=True):
-            source, target = edge[0], edge[1]
-            relation = edge[2].get('relation', '')
-            mermaid_output += f"    {source.replace(' ', '_')} -->|{relation}| {target.replace(' ', '_')}\n"
-        return mermaid_output
+    def get_graph_data(self):
+        return nx.node_link_data(self.graph)
 
-    def page_rank(self):
-        return nx.pagerank(self.graph)
+    def get_all_nodes(self):
+        return list(self.graph.nodes)
 
-    def detect_communities(self):
-        return community_louvain.best_partition(self.graph)
+    def enrich_node(self, node_name):
+        if node_name not in self.graph:
+            return {"error": f"Node '{node_name}' not found in the graph."}
+        
+        attributes = self.graph.nodes[node_name]
+        connections = list(self.graph.neighbors(node_name))
+        enriched_info = enrich_node_info(node_name, attributes, connections)
+        
+        # Update the node with the enriched information
+        self.graph.nodes[node_name]['enriched_info'] = enriched_info.enriched_content
+        
+        return {
+            "original_info": str(attributes),
+            "enriched_info": enriched_info.enriched_content
+        }
 
 kg = NeurosymbolicKnowledgeGraph()
 kg.load_graph()  # Load existing graph if available
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', additional_links=[
+        {'url': '/philosophers_pagerank', 'text': 'Philosophers PageRank'},
+        {'url': '/top_nodes_distances', 'text': 'Top Nodes Distances'}
+    ])
 
-@app.route('/add_node', methods=['POST'])
-def add_node():
+@app.route('/bedrock_models', methods=['GET'])
+def get_bedrock_models():
+    models = list_bedrock_models()
+    return jsonify(models)
+
+@app.route('/bedrock_invoke', methods=['POST'])
+def invoke_bedrock():
     data = request.json
-    node = data.get('node')
-    attributes = data.get('attributes', {})
-    kg.add_node(node, attributes)
-    kg.save_graph()  # Save the graph after adding a node
-    return jsonify({"message": f"Node '{node}' added successfully"})
+    model_id = data.get('model_id')
+    prompt = data.get('prompt')
+    system_prompt = data.get('system_prompt', '')
+    
+    if not model_id or not prompt:
+        return jsonify({"error": "Missing model_id or prompt"}), 400
+    
+    response = invoke_bedrock_model(model_id, prompt, system_prompt)
+    return jsonify({"response": response})
 
-@app.route('/add_edge', methods=['POST'])
-def add_edge():
+@app.route('/graph_data', methods=['GET'])
+def get_graph_data():
+    return jsonify(kg.get_graph_data())
+
+@app.route('/get_nodes', methods=['GET'])
+def get_nodes():
+    return jsonify(kg.get_all_nodes())
+
+@app.route('/enrich_node', methods=['POST'])
+def enrich_node():
     data = request.json
-    node1 = data.get('node1')
-    node2 = data.get('node2')
-    relation = data.get('relation')
-    kg.add_edge(node1, node2, {"relation": relation})
-    kg.save_graph()  # Save the graph after adding an edge
-    return jsonify({"message": f"Edge from '{node1}' to '{node2}' added successfully"})
+    node_name = data.get('node_name')
+    
+    if not node_name:
+        return jsonify({"error": "Missing node_name"}), 400
+    
+    node_info = kg.enrich_node(node_name)
+    return jsonify(node_info)
 
-@app.route('/query_node', methods=['GET'])
-def query_node():
-    node = request.args.get('node')
-    result = kg.query(node)
-    return jsonify({"result": result})
+@app.route('/query_knowledge_base', methods=['POST'])
+def query_kb():
+    data = request.json
+    query = data.get('query')
+    max_results = data.get('max_results', 5)
+    
+    if not query:
+        return jsonify({"error": "Missing query"}), 400
+    
+    kb_results = query_knowledge_base(query, max_results)
+    return jsonify([result.dict() for result in kb_results])
 
-@app.route('/visualize', methods=['GET'])
-def visualize():
-    mermaid_graph = kg.export_to_mermaid()
-    return jsonify({"mermaid_graph": mermaid_graph})
+@app.route('/test_bedrock', methods=['POST'])
+def test_bedrock():
+    data = request.json
+    model_id = data.get('model_id', 'anthropic.claude-v2')
+    prompt = data.get('prompt', 'What is the capital of France?')
+    system_prompt = data.get('system_prompt', '')
 
-@app.route('/page_rank', methods=['GET'])
-def page_rank():
-    ranks = kg.page_rank()
-    return jsonify(ranks)
+    response = invoke_bedrock_model(model_id, prompt, system_prompt)
+    return jsonify({"response": response})
 
-@app.route('/detect_communities', methods=['GET'])
-def detect_communities():
-    communities = kg.detect_communities()
-    return jsonify(communities)
+@app.route('/philosophers_pagerank')
+def philosophers_pagerank():
+    pagerank = nx.pagerank(kg.graph)
+    sorted_pagerank = sorted(pagerank.items(), key=lambda x: x[1], reverse=True)
+    return render_template('philosophers_pagerank.html', pagerank=sorted_pagerank)
 
-@app.route('/load_graph', methods=['POST'])
-def load_graph():
-    try:
-        file_content = request.json.get('file_content')
-        print(f"Received file content: {file_content[:100]}...")  # Print first 100 characters
-        data = json.loads(file_content)
-        print(f"Parsed JSON data structure:")
-        print(json.dumps(data, indent=2)[:500])  # Print first 500 characters of formatted JSON
-        if 'edges' in data and 'links' not in data:
-            data['links'] = data.pop('edges')
-        if 'nodes' not in data or 'links' not in data:
-            raise KeyError("JSON data must contain both 'nodes' and 'links' (or 'edges') keys")
-        print(f"Creating networkx graph with {len(data['nodes'])} nodes and {len(data['links'])} links")
-        kg.graph = nx.node_link_graph(data)
-        print(f"NetworkX graph created successfully with {len(kg.graph.nodes)} nodes and {len(kg.graph.edges)} edges")
-        kg.save_graph()  # Save the newly loaded graph
-        return jsonify({"message": "Graph loaded successfully", "nodes": len(kg.graph.nodes), "edges": len(kg.graph.edges)})
-    except json.JSONDecodeError as e:
-        print(f"JSON Decode Error: {str(e)}")
-        return jsonify({"error": f"Invalid JSON: {str(e)}"}), 400
-    except KeyError as e:
-        print(f"KeyError: {str(e)}")
-        return jsonify({"error": f"Missing key in JSON: {str(e)}"}), 400
-    except Exception as e:
-        print(f"Unexpected error: {str(e)}")
-        return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
+@app.route('/top_nodes_distances')
+def top_nodes_distances():
+    pagerank = nx.pagerank(kg.graph)
+    top_20_nodes = sorted(pagerank, key=pagerank.get, reverse=True)[:20]
+    
+    distances = {}
+    for node1 in top_20_nodes:
+        distances[node1] = {}
+        for node2 in top_20_nodes:
+            if node1 != node2:
+                try:
+                    distances[node1][node2] = nx.shortest_path_length(kg.graph, node1, node2)
+                except nx.NetworkXNoPath:
+                    distances[node1][node2] = float('inf')
+    
+    return render_template('top_nodes_distances.html', nodes=top_20_nodes, distances=distances)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

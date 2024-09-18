@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Nodes Distances</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Top Nodes Distances</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Node</th>
+                    {% for node in nodes %}
+                    <th>{{ node }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for node1 in nodes %}
+                <tr>
+                    <th>{{ node1 }}</th>
+                    {% for node2 in nodes %}
+                    <td>
+                        {% if node1 == node2 %}
+                        -
+                        {% else %}
+                        {{ distances[node1][node2] }}
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <a href="/">Back to Home</a>
+    </footer>
+</body>
+</html>
