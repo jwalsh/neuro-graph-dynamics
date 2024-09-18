@@ -31,6 +31,9 @@ class NeurosymbolicKnowledgeGraph:
             node_attrs['lifetime'] = lifetime
         self.graph.add_node(node, **node_attrs)
 
+    def add_edge(self, node1, node2, attributes=None):
+        self.graph.add_edge(node1, node2, **attributes if attributes else {})
+
     def enrich_node(self, node_name):
         if node_name not in self.graph:
             return {"error": f"Node '{node_name}' not found in the graph."}
@@ -46,6 +49,30 @@ class NeurosymbolicKnowledgeGraph:
             "original_info": str(attributes),
             "enriched_info": enriched_info.enriched_content
         }
+
+    def update_contemporary_philosophers(self):
+        """Update the graph with contemporary philosophers and their connections."""
+        # Add new nodes
+        self.add_node("Singer", {"label": "Peter Singer (1946-)", "school": "Utilitarianism"})
+        self.add_node("West", {"label": "Cornel West (1953-)", "school": "Pragmatism, Critical Theory"})
+
+        # Update existing nodes
+        self.graph.nodes["Nussbaum"]["label"] = "Martha Nussbaum (1947-)"
+        self.graph.nodes["Habermas"]["label"] = "Jürgen Habermas (1929-)"
+        self.graph.nodes["Butler"]["label"] = "Judith Butler (1956-)"
+
+        # Add new connections
+        self.add_edge("Singer", "Nussbaum", {"relation": "collaborated"})
+        self.add_edge("Singer", "Rawls", {"relation": "influenced by"})
+        self.add_edge("West", "Dewey", {"relation": "influenced by"})
+        self.add_edge("West", "Marx", {"relation": "influenced by"})
+        self.add_edge("Habermas", "West", {"relation": "debated"})
+        self.add_edge("Butler", "Foucault", {"relation": "influenced by"})
+        self.add_edge("Butler", "Derrida", {"relation": "influenced by"})
+        self.add_edge("Nussbaum", "Rawls", {"relation": "influenced by"})
+        self.add_edge("Nussbaum", "Sen", {"relation": "collaborated"})
+
+        return "Contemporary philosophers and their connections have been added to the graph."
 
 kg = NeurosymbolicKnowledgeGraph()
 kg.load_graph()  # Load existing graph if available
@@ -157,6 +184,11 @@ def top_nodes_distances():
                     distances[node1][node2] = float('inf')
     
     return render_template('top_nodes_distances.html', nodes=top_20_nodes, distances=distances)
+
+@app.route('/update_contemporary_philosophers', methods=['POST'])
+def update_contemporary_philosophers():
+    result = kg.update_contemporary_philosophers()
+    return jsonify({"message": result})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

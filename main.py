@@ -91,9 +91,36 @@ class NeurosymbolicKnowledgeGraph:
         """Detect communities using the Louvain method."""
         return community_louvain.best_partition(self.graph)
 
+    def update_contemporary_philosophers(self):
+        """Update the graph with contemporary philosophers and their connections."""
+        # Add new nodes
+        self.add_node("Singer", {"label": "Peter Singer (1946-)", "school": "Utilitarianism"})
+        self.add_node("West", {"label": "Cornel West (1953-)", "school": "Pragmatism, Critical Theory"})
+
+        # Update existing nodes
+        self.graph.nodes["Nussbaum"]["label"] = "Martha Nussbaum (1947-)"
+        self.graph.nodes["Habermas"]["label"] = "Jürgen Habermas (1929-)"
+        self.graph.nodes["Butler"]["label"] = "Judith Butler (1956-)"
+
+        # Add new connections
+        self.add_edge("Singer", "Nussbaum", {"relation": "collaborated"})
+        self.add_edge("Singer", "Rawls", {"relation": "influenced by"})
+        self.add_edge("West", "Dewey", {"relation": "influenced by"})
+        self.add_edge("West", "Marx", {"relation": "influenced by"})
+        self.add_edge("Habermas", "West", {"relation": "debated"})
+        self.add_edge("Butler", "Foucault", {"relation": "influenced by"})
+        self.add_edge("Butler", "Derrida", {"relation": "influenced by"})
+        self.add_edge("Nussbaum", "Rawls", {"relation": "influenced by"})
+        self.add_edge("Nussbaum", "Sen", {"relation": "collaborated"})
+
+        print("Contemporary philosophers and their connections have been added to the graph.")
+
 def main():
     kg = NeurosymbolicKnowledgeGraph()
     kg.load_graph()  # Load existing graph if available
+
+    # Update the graph with contemporary philosophers
+    kg.update_contemporary_philosophers()
 
     while True:
         print("\nNeurosymbolic Knowledge Graph Operations:")

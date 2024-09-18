@@ -38,6 +38,9 @@
                     </select>
                     <button id="query-node-btn">Query Node</button>
                     <button id="enrich-node-btn">Enrich Node</button>
+
+                    <h3>Update Contemporary Philosophers</h3>
+                    <button id="update-contemporary-btn">Update Contemporary Philosophers</button>
                 </div>
                 <div class="right-column">
                     <div id="node-info-container">
@@ -185,6 +188,23 @@
                     },
                     error: function(xhr, status, error) {
                         $('#node-info').text('Error: ' + error);
+                    }
+                });
+            });
+
+            // Update Contemporary Philosophers
+            $('#update-contemporary-btn').click(function() {
+                $.ajax({
+                    url: '/update_contemporary_philosophers',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    success: function(response) {
+                        alert(response.message);
+                        loadNodes();
+                        loadAndRenderGraph();
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + error);
                     }
                 });
             });
