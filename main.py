@@ -7,9 +7,12 @@ class NeurosymbolicKnowledgeGraph:
     def __init__(self):
         self.graph = nx.Graph()
 
-    def add_node(self, node, attributes=None):
-        """Add a new node to the graph with optional attributes."""
-        self.graph.add_node(node, **attributes if attributes else {})
+    def add_node(self, node, attributes=None, lifetime=None):
+        """Add a new node to the graph with optional attributes and lifetime."""
+        node_attrs = attributes or {}
+        if lifetime:
+            node_attrs['lifetime'] = lifetime
+        self.graph.add_node(node, **node_attrs)
 
     def add_edge(self, node1, node2, attributes=None):
         """Add a new edge between two nodes with optional attributes."""
@@ -110,8 +113,9 @@ def main():
         if choice == '1':
             node = input("Enter node name: ")
             attributes = input("Enter node attributes (as JSON, press Enter for none): ")
+            lifetime = input("Enter node lifetime (optional, press Enter to skip): ")
             attributes = json.loads(attributes) if attributes else None
-            kg.add_node(node, attributes)
+            kg.add_node(node, attributes, lifetime)
         elif choice == '2':
             node1 = input("Enter first node name: ")
             node2 = input("Enter second node name: ")

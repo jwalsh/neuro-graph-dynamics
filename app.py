@@ -25,6 +25,12 @@ class NeurosymbolicKnowledgeGraph:
     def get_all_nodes(self):
         return list(self.graph.nodes)
 
+    def add_node(self, node, attributes=None, lifetime=None):
+        node_attrs = attributes or {}
+        if lifetime:
+            node_attrs['lifetime'] = lifetime
+        self.graph.add_node(node, **node_attrs)
+
     def enrich_node(self, node_name):
         if node_name not in self.graph:
             return {"error": f"Node '{node_name}' not found in the graph."}
@@ -82,6 +88,19 @@ def get_graph_data():
 @app.route('/get_nodes', methods=['GET'])
 def get_nodes():
     return jsonify(kg.get_all_nodes())
+
+@app.route('/add_node', methods=['POST'])
+def add_node():
+    data = request.json
+    node_name = data.get('node_name')
+    attributes = data.get('attributes')
+    lifetime = data.get('lifetime')
+    
+    if not node_name:
+        return jsonify({"error": "Missing node_name"}), 400
+    
+    kg.add_node(node_name, attributes, lifetime)
+    return jsonify({"success": True, "message": f"Node '{node_name}' added successfully"})
 
 @app.route('/enrich_node', methods=['POST'])
 def enrich_node():

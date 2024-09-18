@@ -23,9 +23,16 @@
     </nav>
     <main>
         <section id="node-operations">
-            <h2>Node Query and Enrichment</h2>
+            <h2>Node Operations</h2>
             <div class="container">
                 <div class="left-column">
+                    <h3>Add Node</h3>
+                    <input type="text" id="new-node-name" placeholder="Node name">
+                    <input type="text" id="new-node-attributes" placeholder="Attributes (JSON format)">
+                    <input type="text" id="new-node-lifetime" placeholder="Lifetime (optional)">
+                    <button id="add-node-btn">Add Node</button>
+
+                    <h3>Query/Enrich Node</h3>
                     <select id="node-select">
                         <option value="">Select a node</option>
                     </select>
@@ -78,10 +85,57 @@
             new ClipboardJS('.copy-icon');
 
             // Load nodes
-            $.get('/get_nodes', function(nodes) {
-                var select = $('#node-select');
-                nodes.forEach(function(node) {
-                    select.append($('<option></option>').val(node).text(node));
+            function loadNodes() {
+                $.get('/get_nodes', function(nodes) {
+                    var select = $('#node-select');
+                    select.empty();
+                    select.append($('<option></option>').val('').text('Select a node'));
+                    nodes.forEach(function(node) {
+                        select.append($('<option></option>').val(node).text(node));
+                    });
+                });
+            }
+
+            loadNodes();
+
+            // Add node
+            $('#add-node-btn').click(function() {
+                var nodeName = $('#new-node-name').val();
+                var attributes = $('#new-node-attributes').val();
+                var lifetime = $('#new-node-lifetime').val();
+
+                if (!nodeName) {
+                    alert('Please enter a node name.');
+                    return;
+                }
+
+                try {
+                    attributes = attributes ? JSON.parse(attributes) : {};
+                } catch (e) {
+                    alert('Invalid JSON format for attributes.');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/add_node',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        node_name: nodeName,
+                        attributes: attributes,
+                        lifetime: lifetime
+                    }),
+                    success: function(response) {
+                        alert(response.message);
+                        $('#new-node-name').val('');
+                        $('#new-node-attributes').val('');
+                        $('#new-node-lifetime').val('');
+                        loadNodes();
+                        loadAndRenderGraph();
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + error);
+                    }
                 });
             });
             
