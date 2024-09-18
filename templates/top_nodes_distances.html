@@ -18,6 +18,9 @@
         th {
             background-color: #f2f2f2;
         }
+        .similarity-cell {
+            background-color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +42,7 @@
                 <tr>
                     <th>{{ node1 }}</th>
                     {% for node2 in nodes %}
-                    <td>
+                    <td class="similarity-cell" style="background-color: rgba(255, 0, 0, {{ distances[node1][node2] / max_distance }});">
                         {% if node1 == node2 %}
                         -
                         {% else %}
@@ -55,5 +58,16 @@
     <footer>
         <a href="/">Back to Home</a>
     </footer>
+    <script>
+        var max_distance = Math.max(...Object.values({{ distances | tojson }}).flatMap(obj => Object.values(obj)));
+        var cells = document.querySelectorAll('.similarity-cell');
+        cells.forEach(function(cell) {
+            var distance = parseFloat(cell.textContent);
+            if (!isNaN(distance)) {
+                var intensity = distance / max_distance;
+                cell.style.backgroundColor = `rgba(255, 0, 0, ${intensity})`;
+            }
+        });
+    </script>
 </body>
 </html>

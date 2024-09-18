@@ -190,5 +190,22 @@ def update_contemporary_philosophers():
     result = kg.update_contemporary_philosophers()
     return jsonify({"message": result})
 
+@app.route('/debug')
+def debug_page():
+    return render_template('debug.html')
+
+@app.route('/reload_db', methods=['POST'])
+def reload_db():
+    filename = request.form.get('filename', 'knowledge_graph.json')
+    kg.load_graph(filename)
+    return jsonify({"message": f"Database reloaded from {filename}"})
+
+@app.route('/check_bedrock', methods=['POST'])
+def check_bedrock():
+    model_id = request.form.get('model_id', 'anthropic.claude-v2')
+    prompt = request.form.get('prompt', 'What is the capital of France?')
+    response = invoke_bedrock_model(model_id, prompt)
+    return jsonify({"response": response})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

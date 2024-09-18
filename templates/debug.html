@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Page</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Debug Page</h1>
+    <section>
+        <h2>Reload Database from JSON</h2>
+        <input type="text" id="json-filename" placeholder="JSON filename" value="knowledge_graph.json">
+        <button id="reload-db-btn">Reload Database</button>
+        <div id="reload-result"></div>
+    </section>
+    <section>
+        <h2>Check Bedrock Functionality</h2>
+        <input type="text" id="bedrock-model" placeholder="Bedrock model ID" value="anthropic.claude-v2">
+        <textarea id="bedrock-prompt" placeholder="Enter prompt">What is the capital of France?</textarea>
+        <button id="check-bedrock-btn">Check Bedrock</button>
+        <div id="bedrock-result"></div>
+    </section>
+    <script>
+        $(document).ready(function() {
+            $('#reload-db-btn').click(function() {
+                var filename = $('#json-filename').val();
+                $.post('/reload_db', {filename: filename}, function(data) {
+                    $('#reload-result').text(data.message);
+                });
+            });
+
+            $('#check-bedrock-btn').click(function() {
+                var model_id = $('#bedrock-model').val();
+                var prompt = $('#bedrock-prompt').val();
+                $.post('/check_bedrock', {model_id: model_id, prompt: prompt}, function(data) {
+                    $('#bedrock-result').text(data.response);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
