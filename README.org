@@ -40,6 +40,14 @@ This project implements a web-based Neurosymbolic Knowledge Graph system that al
 
 3. Use the interface to query nodes, enrich information, and visualize the knowledge graph.
 
+** Features
+- Node Query and Enrichment: Select a node from the dropdown and query or enrich its information using AI services.
+- Graph Visualization: View the knowledge graph using an interactive Mermaid diagram.
+- Export to JSON: Export the entire graph structure to a JSON file for further analysis or backup.
+- Philosophers PageRank: View the importance of philosophers based on their connections in the graph.
+- Top Nodes Similarity: Explore the similarity between the top nodes in the graph based on their distances.
+- Bedrock Model Testing: Test different AWS Bedrock models with custom prompts and system prompts.
+
 * For Developers
 ** Project Structure
 - app.py: Main Flask application
@@ -48,7 +56,9 @@ This project implements a web-based Neurosymbolic Knowledge Graph system that al
 - ollama_helper.py: Ollama integration for local LLM support
 - database.py: SQLite database operations
 - static/css/styles.css: CSS styles for the web interface
-- templates/index.html: HTML template for the web interface
+- templates/index.html: HTML template for the main interface
+- templates/philosophers_pagerank.html: Template for displaying PageRank results
+- templates/top_nodes_distances.html: Template for displaying node similarities
 
 ** Adding New Features
 1. Implement new functionality in the appropriate helper file or create a new one if needed.

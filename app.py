@@ -47,9 +47,15 @@ kg.load_graph()  # Load existing graph if available
 @app.route('/')
 def index():
     return render_template('index.html', additional_links=[
+        {'url': '/visualize', 'text': 'Graph Visualization'},
         {'url': '/philosophers_pagerank', 'text': 'Philosophers PageRank'},
-        {'url': '/top_nodes_distances', 'text': 'Top Nodes Distances'}
+        {'url': '/top_nodes_distances', 'text': 'Top Nodes Similarity'}
     ])
+
+@app.route('/export_json', methods=['GET'])
+def export_json():
+    graph_data = kg.get_graph_data()
+    return jsonify(graph_data)
 
 @app.route('/bedrock_models', methods=['GET'])
 def get_bedrock_models():

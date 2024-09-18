@@ -22,34 +22,41 @@
         </ul>
     </nav>
     <main>
-        <div class="container">
-            <div class="left-column">
-                <h2>Node Query and Enrichment</h2>
-                <select id="node-select">
-                    <option value="">Select a node</option>
-                </select>
-                <button id="query-node-btn">Query Node</button>
-                <button id="enrich-node-btn">Enrich Node</button>
-            </div>
-            <div class="right-column">
-                <div id="node-info-container">
-                    <pre id="node-info"></pre>
-                    <i class="copy-icon fas fa-copy" data-clipboard-target="#node-info"></i>
+        <section id="node-operations">
+            <h2>Node Query and Enrichment</h2>
+            <div class="container">
+                <div class="left-column">
+                    <select id="node-select">
+                        <option value="">Select a node</option>
+                    </select>
+                    <button id="query-node-btn">Query Node</button>
+                    <button id="enrich-node-btn">Enrich Node</button>
+                </div>
+                <div class="right-column">
+                    <div id="node-info-container">
+                        <pre id="node-info"></pre>
+                        <i class="copy-icon fas fa-copy" data-clipboard-target="#node-info"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="graph-container">
+        </section>
+
+        <section id="graph-visualization">
             <h2>Knowledge Graph Visualization</h2>
-            <div id="mermaid-graph"></div>
-        </div>
-        <div id="bedrock-test">
+            <div id="graph-container">
+                <div id="mermaid-graph"></div>
+            </div>
+            <button id="export-json-btn">Export Graph to JSON</button>
+        </section>
+
+        <section id="bedrock-test">
             <h2>Test Bedrock Model</h2>
             <input type="text" id="bedrock-model-id" placeholder="Model ID (default: anthropic.claude-v2)">
             <textarea id="bedrock-prompt" placeholder="Enter your prompt"></textarea>
             <textarea id="bedrock-system-prompt" placeholder="Enter system prompt (optional)"></textarea>
             <button id="test-bedrock-btn">Test Bedrock</button>
             <div id="bedrock-response"></div>
-        </div>
+        </section>
     </main>
 
     <script>
@@ -155,6 +162,11 @@
                         $('#bedrock-response').text('Error: ' + error);
                     }
                 });
+            });
+
+            // Export JSON
+            $('#export-json-btn').click(function() {
+                window.location.href = '/export_json';
             });
 
             // Load and render graph
